@@ -189,6 +189,8 @@ All supporting knowledge in `references/`:
 | [add-component.md](workflows/add-component.md) | Add reference/workflow/script/template to existing skill |
 | [publish.md](workflows/publish.md) | Publish/ship a finished skill (manual only — never auto-triggered) |
 
+This skill's own eval pack: [evals.md](evals.md) — real runs, baseline comparison, and the cases still untested.
+
 ## Templates
 
 Ready-to-copy starting points in `templates/`:
