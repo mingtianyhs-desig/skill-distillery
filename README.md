@@ -108,6 +108,7 @@ skill-distillery/
 │   ├── evaluation-patterns.md            # Rigor lanes and eval packs
 │   ├── independent-review-brief.md       # Fresh-eyes review prompt
 │   └── cross-agent-compatibility.md      # Cross-agent portability guide
+├── evals.md                              # Real-run eval pack + baseline results
 ├── templates/
 │   ├── simple-skill.md                   # Single-file template
 │   ├── eval-pack.md                      # Team/public eval template
