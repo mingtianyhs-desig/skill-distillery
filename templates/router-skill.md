@@ -8,7 +8,9 @@ Use this template for multi-workflow skills with shared principles. Copy and cus
 ---
 name: {{SKILL_NAME}}
 description: "{{What it does across all modes}}. Use when {{trigger conditions}}. Triggers on: {{keyword1}}, {{keyword2}}, {{keyword3}}, {{keyword4}}."
-argument-hint: "[{{expected input}}]"
+# argument-hint 仅 Claude Code 识别（autocomplete 提示）。若经 claude.ai 上传 / Skills API /
+# package_skill.py 分发，必须删除此字段——否则硬报错 "Unexpected key(s) in SKILL.md frontmatter"。
+# argument-hint: "[{{expected input}}]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 

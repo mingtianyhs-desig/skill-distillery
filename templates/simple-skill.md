@@ -6,7 +6,9 @@ Use this template for single-workflow skills. Target under 150 lines for Quick P
 ---
 name: {{SKILL_NAME}}
 description: "{{What it does}}. Use when {{trigger conditions}}. Triggers on: {{keyword1}}, {{keyword2}}, {{keyword3}}."
-argument-hint: "[{{expected input}}]"
+# argument-hint 仅 Claude Code 识别（autocomplete 提示）。若经 claude.ai 上传 / Skills API /
+# package_skill.py 分发，必须删除此字段——否则硬报错 "Unexpected key(s) in SKILL.md frontmatter"。
+# argument-hint: "[{{expected input}}]"
 allowed-tools: Read, Bash
 ---
 
@@ -75,4 +77,4 @@ Common failure points — where Claude gets this wrong:
 - **Keep research out** — Put rationale, raw notes, and eval prompts outside SKILL.md unless needed at runtime
 - **Add wait gates** only at genuine decision points
 - **Keep under the lane target** — <150 lines for Quick Personal, <200 for simple shared skills
-- **Description** should be under 1024 chars with specific trigger keywords
+- **Description + `when_to_use`** combined are truncated at **1,536 chars** in the skill listing — keep trigger keywords specific and inside that cap
