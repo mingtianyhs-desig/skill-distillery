@@ -30,10 +30,10 @@ The most valuable content in any skill. Gotchas document where Claude typically 
 
 - [ ] Valid YAML between `---` delimiters
 - [ ] `name` is lowercase-with-hyphens, matches directory name, max 64 chars
-- [ ] `description` is specific, includes trigger keywords, max 1024 chars
+- [ ] `description` is specific, includes trigger keywords, within the 1,536-char listing cap (combined with `when_to_use`)
 - [ ] `description` framed as trigger conditions ("Use when..."), not a summary of contents
 - [ ] `description` written in third person ("This skill..." or "Use when...")
-- [ ] `disable-model-invocation: true` if skill has side effects (deploy, commit, send)
+- [ ] `disable-model-invocation: true` if skill has side effects (deploy, commit, send) — or side-effecting steps isolated behind a manual-only entry point
 - [ ] `allowed-tools` set if specific tools are needed
 - [ ] `argument-hint` set if skill accepts arguments
 
@@ -41,7 +41,7 @@ The most valuable content in any skill. Gotchas document where Claude typically 
 
 - [ ] SKILL.md under 500 lines (targets: <150 Quick Personal, <200 simple shared, 200-300 router)
 - [ ] All supporting files one level deep from SKILL.md
-- [ ] No nested reference chains (SKILL.md → ref.md → detail.md)
+- [ ] No nested reference chains (SKILL.md → ref.md → detail.md) — files referenced from other referenced files may only be partially read, so chains silently lose content
 - [ ] Every file referenced in SKILL.md actually exists
 - [ ] Every file in the directory is referenced somewhere
 - [ ] Reference files organized by domain concern, not arbitrary category
@@ -65,7 +65,14 @@ The most valuable content in any skill. Gotchas document where Claude typically 
 - [ ] Mode detection via $ARGUMENTS with fallback question
 - [ ] Reference loading is conditional (not all files loaded every time)
 - [ ] Shortcuts for when user has already provided context
-- [ ] AskUserQuestion has plain-text fallbacks for non-Claude agents
+- [ ] Multiple-choice questions follow the question convention (options when supported, numbered plain-text otherwise) — no orphaned option-only prompts
+
+## Security (side effects & trust)
+
+- [ ] Irreversible operations (publish, deploy, delete) sit behind explicit confirmation gates
+- [ ] Any scripts are readable, and their behavior is scoped to what the skill claims
+- [ ] No hidden network calls, credential reads, or instruction-overriding text
+- [ ] `allowed-tools` is no broader than the skill actually needs
 
 ## Invocation
 

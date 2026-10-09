@@ -18,6 +18,8 @@ These features are universally supported or gracefully ignored:
 
 These only work in Claude Code. Each needs a fallback strategy:
 
+> **Frontmatter packaging warning:** "Other agents ignore unknown fields" is true for CLI agents that parse leniently — but NOT for packaging to claude.ai / the Skills API / marketplace validation, where only the six standard fields (`name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`) are accepted and any other key hard-errors. If the skill may be published there, keep frontmatter to those six. See `references/official-spec.md`.
+
 ### `AskUserQuestion`
 
 **What it does:** Presents tappable multiple-choice options in the terminal.
@@ -45,11 +47,11 @@ Otherwise, ask: "How interactive should this skill be?
 ```markdown
 ## Research Protocol
 
-In Claude Code: Spawn 2-3 parallel Sonnet agents with scoped questions.
+Spawn 2-3 parallel sub-agents with scoped questions (one per topic).
 
-In other agents: Perform the following research sequentially:
+Sequential fallback: research each topic in order:
 1. Search for current [library] documentation
-2. Find 2026 best practices for [topic]
+2. Find current best practices for [topic]
 3. Check for deprecated patterns
 ```
 
@@ -57,7 +59,7 @@ In other agents: Perform the following research sequentially:
 
 **What it does:** Runs the skill in an isolated subagent context.
 
-**Fallback:** None — this is a Claude Code execution model feature. Safe to include in frontmatter (other agents ignore unknown fields).
+**Fallback:** None — this is a Claude Code execution model feature. CLI agents ignore unknown fields — but see the frontmatter packaging warning above.
 
 ### `allowed-tools`
 
@@ -82,13 +84,13 @@ If dynamic injection is not supported, run: `git branch --show-current`
 
 **What it does:** Controls whether the agent can auto-load the skill.
 
-**Fallback:** Other agents ignore these fields. Safe to include — worst case, the skill is always available.
+**Fallback:** Other agents ignore these fields. Safe to include for CLI agents — worst case, the skill is always available. See the frontmatter packaging warning above for claude.ai / Skills API paths.
 
 ### `model` Field
 
 **What it does:** Forces a specific model (haiku, sonnet, opus).
 
-**Fallback:** Other agents ignore this. The skill runs on whatever model is configured.
+**Fallback:** Other agents ignore this. The skill runs on whatever model is configured. See the frontmatter packaging warning above.
 
 ## Writing Portable Instructions
 
@@ -174,7 +176,7 @@ The skill relies on Claude Code-specific features with no fallback. Won't functi
 - [ ] All AskUserQuestion calls have plain-text fallback questions nearby
 - [ ] All Agent/subagent references describe the task inline for sequential execution
 - [ ] Instructions use action-oriented language ("read the file") not tool names ("use Read tool")
-- [ ] Frontmatter-only features (`allowed-tools`, `context`, `model`) are safe to ignore
+- [ ] Frontmatter is packaging-safe: if the skill may be published to claude.ai / Skills API, only the six standard fields are used (see official-spec)
 - [ ] Dynamic context injection has manual command fallbacks
 - [ ] Core workflow functions without any Claude Code-specific features
 - [ ] Degradation rating assigned: Full / Graceful / Dependent
