@@ -227,115 +227,15 @@ Rationale:
 
 ---
 
-## Step 6: Build
+## Step 6-10: Build & Validate
 
-Create all files following the official spec. Order:
-1. Reference files first (foundation)
-2. Workflow files (if router pattern)
-3. `evals.md` when required by lane, using `templates/eval-pack.md`
-4. SKILL.md last (references everything else)
+Building, gotchas review, validation, evals, and cross-agent review are shared execution steps — **single source of truth: `workflows/build-and-validate.md`**. Follow it in order after the architecture is approved:
 
-For each file:
-- Follow the appropriate template from `templates/` as a starting point
-- Adapt based on the synthesis from Step 2 and strategy from Step 3
-- Use standard markdown headings
-- Keep SKILL.md lean: under 150 lines for Quick Personal, 200 for simple shared skills, 300 for router skills
-- Include concrete examples from the source material
-- Keep research notes, rationale, and eval prompts out of SKILL.md unless needed at runtime
-
-If decisions arise during build, follow the question convention (options when supported, numbered plain text otherwise). Don't guess on important choices.
-
----
-
-## Step 7: Gotchas Review
-
-Before validation, explicitly review the skill's gotchas content. This is the highest-signal content in any skill.
-
-**Check:**
-- Does the skill have a dedicated `## Gotchas` section (in SKILL.md or a reference file)?
-- Are there at least 3-5 specific gotchas for non-trivial skills?
-- Does each gotcha use "don't do X because Y" structure?
-- Are gotchas based on real Claude failure modes (not theoretical warnings)?
-
-**If gotchas are thin or missing**, think through:
-1. What would Claude get wrong on first attempt applying this knowledge?
-2. What are the most common misinterpretations of this domain?
-3. What looks correct but is subtly wrong?
-4. What does the source material explicitly warn against?
-
-Add or strengthen gotchas before proceeding to validation.
-
----
-
-## Step 8: Validate
-
-Read `references/quality-checklist.md` and run through every item (note: gotchas are now the first section):
-
-- Rigor lane selected and followed
-- Eval depth matches lane
-- Frontmatter valid and complete
-- Description includes trigger keywords
-- Line counts within limits
-- All files cross-referenced
-- Standard markdown headings
-- Concrete examples present
-- Interactivity patterns in place (if applicable)
-
-Present the validation report:
-
-> Skill created at [path]. Validation report:
-> - [X] items pass
-> - [Y] items need attention: [list them]
-
----
-
-## Step 9: Eval & Smoke Test Review
-
-Run the evaluation plan from Step 4 **for real** — record what the agent actually did, not what you expected. Every prompt also gets a **no-skill baseline run**: if with-skill and baseline behave identically, the prompt has no discriminating power (ceiling effect); replace it or add a behavioral assertion (rounds taken, when a tactic switches).
-
-### Quick Personal
-- Run the 1-3 smoke prompts for real: one positive trigger, one representative task, and (if applicable) one non-trigger
-- Run each prompt once more without the skill as the baseline
-- Fix obvious trigger, workflow, or verbosity problems
-- Report any prompt you could not test
-
-### Team Internal
-- Check positive and negative trigger prompts
-- Check representative task prompts against expected behavior
-- Confirm `evals.md` records expected behavior clearly
-
-### Public Polished
-- Check the full eval pack
-- Run at least one positive trigger, one representative task, and one non-trigger in the current environment
-- Perform the fresh-agent test if available
-- If a true fresh-agent test is unavailable, mark that limitation in the validation report and keep the checklist in `evals.md`
-
-Present:
-
-> Eval review:
-> - [X] prompts pass
-> - [Y] prompts need fixes
-> - Fresh-agent test: [passed / unavailable / skipped by lane]
-
-Fix any failed Public Polished eval before moving on.
-
----
-
-## Step 10: Cross-Agent Compatibility Review
-
-Skip this for Quick Personal skills unless the user requested multiple-agent support. For Team Internal and Public Polished skills, read `references/cross-agent-compatibility.md` and evaluate:
-
-- Identify every Claude Code-specific feature used
-- Check for plain-text fallbacks
-- Verify tool references are action-oriented (not tool-name-specific)
-- Assign degradation rating
-
-Present:
-
-> Cross-agent compatibility: **[Degrades Gracefully / Full / Claude Code-Dependent]**
-> - [X] features are Claude Code-enhanced with fallbacks
-> - [Y] features are universal
-> - [Specific fixes needed, if any]
+1. Build
+2. Gotchas Review
+3. Validate (`scripts/validate_skill.py` + quality checklist)
+4. Eval & Smoke Test Review (real runs with no-skill baseline)
+5. Cross-Agent Compatibility Review
 
 ---
 
@@ -356,10 +256,6 @@ This workflow is complete when:
 - [ ] Strategy decisions made interactively
 - [ ] Evaluation plan matches the lane
 - [ ] Architecture proposed and approved
-- [ ] All files created following official spec
-- [ ] Gotchas section reviewed and populated with real failure modes
-- [ ] Quality checklist passed
-- [ ] Eval or smoke test review completed at the chosen depth
-- [ ] Cross-agent compatibility reviewed when lane/target agents require it
+- [ ] Build & validation completed per `workflows/build-and-validate.md`
 - [ ] Shipping (README, review, publish) deferred to the manual-only `workflows/publish.md` — never auto-triggered
 - [ ] User can invoke the skill and it works as designed
