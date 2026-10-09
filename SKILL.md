@@ -1,6 +1,6 @@
 ---
 name: skill-distillery
-description: "Create or audit Claude Code skills. Synthesizes source material (articles, frameworks, talks) bottom-up into strategic, interactive skills — or audits existing skills through a multi-lens framework. Use when creating new skills, turning articles into skills, capturing AI workflows as skills, auditing/reviewing existing skills, or improving skill quality. Triggers on: create skill, build skill, new skill, skill from article, turn this into a skill, capture this as a skill, audit skill, review skill, evaluate skill, improve skill."
+description: "Create or audit agent skills (Claude Code and other AI tools). Synthesizes source material (articles, frameworks, talks) bottom-up into strategic, interactive skills — or audits existing skills through a multi-lens framework. Use when creating new skills, turning articles into skills, capturing AI workflows as skills, auditing/reviewing existing skills, or improving skill quality. Triggers on: create skill, build skill, new skill, skill from article, turn this into a skill, capture this as a skill, audit skill, review skill, evaluate skill, improve skill."
 argument-hint: "[URL, file path, skill path, or description]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebFetch, WebSearch, AskUserQuestion, Agent
 ---
@@ -10,6 +10,11 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebFetch, WebSearch, AskUser
 Distill raw material into potent skills. Articles, talks, frameworks, recent AI work, or just an idea — skill-distillery extracts the strategy bottom-up and builds interactive, well-architected skills from it.
 
 **The core insight:** Good skills aren't restructured content — they're distilled strategy. A 5,000-word article becomes a 300-line skill by extracting principles, mental models, and decision frameworks, not by reformatting paragraphs.
+
+**Two conventions apply everywhere:**
+
+- **Paths** — Every path referenced in this skill (references, workflows, templates, scripts) is relative to the skill's own directory (the one containing SKILL.md), not the user's current working directory. Resolve the skill directory first, then join the relative path.
+- **Questions & options** — For any multiple-choice decision: render tappable options when the runtime supports them, otherwise ask as a numbered plain-text question. Don't repeat fallback boilerplate below; this one convention applies to all workflows. Ask at most 2-3 questions at a time.
 
 ## Quick Start
 
@@ -25,7 +30,7 @@ Distill raw material into potent skills. Articles, talks, frameworks, recent AI 
 
 **Audit an existing skill:**
 > `/skill-distillery audit ~/.claude/skills/my-skill`
-> `/skill-distillery review` — "Can you evaluate the language-market-fit skill?"
+> `/skill-distillery review` — "Can you audit the skill in my skills folder?"
 
 **Add to an existing skill:**
 > `/skill-distillery add reference` — "I want to add a new reference file to my-skill"
@@ -44,7 +49,7 @@ These apply to everything skill-distillery does:
 
 4. **Progressive disclosure** — SKILL.md stays lean (200-300 lines). Reference files contain depth. Load conditionally based on what the user needs.
 
-5. **Opinionated defaults** — Suggest interactive patterns from proven skills (design-portfolio-assistant's discovery phase, language-market-fit's mode detection). The user can override, but the defaults should be good.
+5. **Opinionated defaults** — Suggest interactive patterns proven in good skills (a discovery phase for guided workflows, mode detection for multi-mode skills). The user can override, but the defaults should be good.
 
 6. **Research on demand, not by default** — Most skill creation doesn't need research. Trigger it only when external APIs/libraries are involved or the user explicitly asks. See Research Protocol below.
 
@@ -94,11 +99,11 @@ If AskUserQuestion is available:
 - **Yes, research first** — Fetch current documentation for accurate implementation
 - **No, I have context** — Proceed with what we have
 
-**How to execute:** Spawn 2-3 parallel Sonnet agents (fast, cheap, good at retrieval) with specific, scoped questions. Not "research everything about X" — scope to what you actually need.
+**How to execute:** Spawn 2-3 parallel sub-agents (fast, cheap, good at retrieval) with specific, scoped questions. Not "research everything about X" — scope to what you actually need.
 
 Example agent prompts:
 - "Fetch current Supabase RLS patterns from official docs"
-- "Find 2026 best practices for React Native navigation libraries"
+- "Find current best practices for React Native navigation libraries"
 - "Check if [library] is still actively maintained"
 
 Use Context7 MCP when available: `resolve-library-id` → `query-docs` for library documentation.
@@ -119,6 +124,7 @@ Detect what the user provided and route to the right workflow:
 | "audit", "review", "evaluate" in args | `workflows/audit-existing-skill.md` |
 | "capture", "just did", "turn this process" | `workflows/from-recent-work.md` |
 | "add reference", "add workflow", "add script" | `workflows/add-component.md` |
+| "publish", "发布" | `workflows/publish.md` (manual only — never reached by auto-trigger) |
 | Description of what they want | `workflows/from-description.md` |
 | No arguments / unclear | Ask what they'd like to do |
 
@@ -150,7 +156,7 @@ All supporting knowledge in `references/`:
 
 | File | Contents | Load When |
 |------|----------|-----------|
-| [official-spec.md](references/official-spec.md) | 2026 skill spec — frontmatter, features, format | Building or auditing skills |
+| [official-spec.md](references/official-spec.md) | Skill spec — frontmatter fields, features, format. Authoritative source is the live online docs; check before building | Building or auditing skills |
 | [synthesis-patterns.md](references/synthesis-patterns.md) | How to extract principles from source material | Source material or recent work entry points |
 | [architecture-decisions.md](references/architecture-decisions.md) | Simple vs. router, when to use each file type | Architecture proposal step (all workflows) |
 | [interactive-design-patterns.md](references/interactive-design-patterns.md) | Discovery, modes, wait gates, AskUserQuestion | Strategy step and audit workflow |
@@ -168,6 +174,7 @@ All supporting knowledge in `references/`:
 | [from-recent-work.md](workflows/from-recent-work.md) | Capture AI process as reusable skill |
 | [audit-existing-skill.md](workflows/audit-existing-skill.md) | Full-framework audit with 7 evaluation lenses |
 | [add-component.md](workflows/add-component.md) | Add reference/workflow/script/template to existing skill |
+| [publish.md](workflows/publish.md) | Publish/ship a finished skill (manual only — never auto-triggered) |
 
 ## Templates
 
