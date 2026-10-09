@@ -15,6 +15,17 @@ Read these reference files before proceeding:
 
 Figure out what the user just did and what they learned.
 
+### First: Is this a skill at all? (Mechanism Gate)
+
+Before capturing, apply this gate to what the user just did:
+
+- **A reusable process others would repeat** → a skill. Continue. ✅
+- **Must happen every time and can't be skipped** → a host hook or external automation, NOT a skill — a skill is advisory and may not run; only a hook guarantees execution.
+- **A one-off investigation, not a repeatable process** → not a skill; don't capture it as one.
+- **A fact or convention that should hold every session** → a persistent instructions file (CLAUDE.md / AGENTS.md type), NOT a skill.
+
+If it's not a skill, say so plainly and name the right mechanism.
+
 ### Gather Context
 
 Ask 2-3 questions:

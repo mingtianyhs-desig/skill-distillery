@@ -17,6 +17,14 @@ Read ALL reference files before proceeding:
 
 ## Step 1: Ingest the Skill
 
+### First: Should this exist as a skill? (Mechanism Gate)
+
+Before auditing content, check whether the mechanism itself is right. A skill is advisory instruction — the agent may run it when relevant, but nothing guarantees execution.
+
+- **The "skill" is something that must happen every time and can't be skipped** (auto-formatting on commit, mandatory checks) → it's really a host hook or external automation. The verdict is: replace the mechanism, don't fix the content. Say so plainly and stop.
+- **Its real job is a fact or convention that should hold every session** → it's a persistent instructions file (CLAUDE.md / AGENTS.md type), not a skill.
+- **It's a genuine reusable process or on-demand knowledge** → continue the audit. ✅
+
 ### Locate and Read
 
 - If user provides a path to a skill directory → read everything in it

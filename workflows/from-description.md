@@ -15,6 +15,17 @@ Read these reference files before proceeding:
 
 Read what the user provided. Determine which path to take:
 
+### First: Is this a skill at all? (Mechanism Gate)
+
+Before designing anything, apply this gate to what the user described:
+
+- **A reusable process or on-demand knowledge** → a skill. Continue. ✅
+- **Must happen every time and can't be skipped** → a host hook or external automation, NOT a skill. A skill is advisory instruction — the agent may run it when relevant, but nothing guarantees execution; only a hook does. Tell the user the mechanism is wrong and stop.
+- **A fact or convention that should hold every session** → a persistent instructions file (CLAUDE.md / AGENTS.md type), NOT a skill.
+- **A one-off investigation that would flood the main context** → a sub-agent, NOT a skill.
+
+If it's not a skill, say so plainly and name the right mechanism. Don't build a skill for a hook's job.
+
 ### Path A: Detailed Description
 
 The user gave a clear, specific description of what the skill should do. Signs:
@@ -101,7 +112,7 @@ Follow the Research Protocol from SKILL.md:
 
 - If the skill involves external APIs/libraries, trigger the research gate
 - Ask: "This involves [X]. Want me to research current best practices, or do you have enough context?"
-- If yes: spawn 2-3 parallel Sonnet agents with scoped questions (Context7 for library docs, WebSearch for patterns)
+- If yes: spawn 2-3 parallel sub-agents with scoped questions (one per topic: library docs, patterns, pitfalls)
 - Feed findings back into the proposal — don't dump into skill files
 - If the user already knows the domain well: skip entirely
 
