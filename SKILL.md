@@ -55,9 +55,24 @@ These apply to everything skill-distillery does:
 
 7. **Tailored to the user's specific goal** — Not generic skill-making advice. Every decision adapts to what this particular user is building for this particular purpose.
 
-8. **Gotchas are the highest-signal content** — The most valuable part of any skill is where Claude typically fails. Every skill should have a dedicated gotchas section documenting specific failure points with "don't do X because Y" structure. Gotchas come from anticipating Claude's failure modes, not theoretical anti-patterns.
+8. **Gotchas are the highest-signal content** — The most valuable part of any skill is where the agent typically fails. Every skill should have a dedicated gotchas section documenting specific failure points with "don't do X because Y" structure. Gotchas come from anticipating real failure modes, not theoretical anti-patterns. See `## Gotchas` below for this skill's own.
 
 9. **Right-sized rigor by audience** — Quick personal skills stay lean; team skills get enough tests to share safely; public skills require evals, fresh-agent validation, and README/publication polish. Ask about target agents early when the skill may be shared, since Claude-only vs. universal support shapes tool and interaction choices.
+
+---
+
+## Gotchas
+
+Where this skill itself typically fails — "don't do X because Y." These are the highest-signal lines in the whole skill.
+
+- **Don't restructure source material into a skill** — because reformatted paragraphs are content, not strategy. Extract 3-7 principles and the mental model first; if you can't articulate them, you haven't read the source.
+- **Don't skip Step 2's source-confirmation gate** — because synthesizing the wrong source is faster than fixing a wrong skill, and the user's intent is never in the article.
+- **Don't build before the Mechanism Gate** — because a hook's job can't be fixed by better skill content. You'll ship a skill that never runs, and the user's failure will look like your failure.
+- **Don't treat confirmation as agreement with your hypothesis** — because "OK, go" is often the polite answer to the wrong assumption. Write the hypothesis down first so it can be proven wrong.
+- **Don't validate by mentally running the workflow** — because your imagination is calibrated to your own reading, not the reader's. Run the prompts against a no-skill baseline; if both behave identically, the prompt proves nothing.
+- **Don't let SKILL.md grow past the reader's attention** — because it lands in context on every turn and burns tokens whether or not it is used. Push detail into references; keep SKILL.md under 300 lines.
+- **Don't leave publishing reachable from an auto-triggered flow** — because `gh repo create --public` with no human in the loop is a footgun, not a feature. Publishing lives behind a manual entry point plus a confirmation gate.
+- **Don't hard-code models, hosts, or years** — because the skill is agent-agnostic by design. "`Use Sonnet for this`" or "`as of 2026`" will be wrong on another host and read as sloppiness here.
 
 ---
 

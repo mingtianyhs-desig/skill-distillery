@@ -149,14 +149,16 @@ def check_skill(skill_dir):
         elif line_count > 300:
             warnings.append(f"SKILL.md is {line_count} lines — over the router target (~300)")
 
-        # drift: hard-coded years and model names in the body
-        body = content.split("---", 2)[-1]
-        for m in re.finditer(r"\b20(?:2[5-9]|3[0-9])\b", body):
-            line_no = body[: m.start()].count("\n") + 1
+        # drift: hard-coded years and model names in the body.
+        # Inline code spans are quoted counterexamples ("don't write `Sonnet`"),
+        # not instructions — exclude them so the check doesn't fire on its own docs.
+        body_nocode = re.sub(r"`[^`]*`", "", content.split("---", 2)[-1])
+        for m in re.finditer(r"\b20(?:2[5-9]|3[0-9])\b", body_nocode):
+            line_no = body_nocode[: m.start()].count("\n") + 1
             warnings.append(f"hard-coded year '{m.group(0)}' in body (line {line_no}) — use 'current' phrasing")
         for kw in ("Sonnet", "haiku", "opus", "Claude Code only"):
-            for m in re.finditer(rf"\b{re.escape(kw)}\b", body):
-                line_no = body[: m.start()].count("\n") + 1
+            for m in re.finditer(rf"\b{re.escape(kw)}\b", body_nocode):
+                line_no = body_nocode[: m.start()].count("\n") + 1
                 warnings.append(f"model/host hard-code '{kw}' in body (line {line_no}) — keep agent-agnostic")
                 break
 
