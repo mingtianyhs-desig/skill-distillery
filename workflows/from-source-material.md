@@ -86,65 +86,52 @@ Context-Dependent (not universal):
 
 ## Step 3: Skill Strategy
 
-Interactive decisions about how the skill should work. Use AskUserQuestion where available, plain-text questions as fallback.
+Interactive decisions about how the skill should work. Per the question convention, render options when supported, numbered plain text otherwise. **At most 2-3 questions per round, with a confirm between the two groups** — never dump all six at once.
 
-### Question 1: Rigor Lane
+### Group 1: Skill Form
 
-"What kind of skill are we making?"
+**Q1 — Rigor lane:** "What kind of skill are we making?"
 
-If AskUserQuestion is available:
 - **Quick personal** — Fast capture for one high-context user; concise `SKILL.md`; 1-3 smoke prompts; no README/publication by default
 - **Team internal** — Shared skill; clear enough for teammates; eval-light pack; README optional
 - **Public polished** — Publishable skill; README, eval pack, fresh-agent test, and compatibility review required
 
-Otherwise ask: "Should this be quick personal, team internal, or public polished?"
+**Q2 — Complexity (confirm, don't ask):** Infer from the source material: simple (one file, <200 lines of instruction) / medium (1-3 reference files) / complex (multiple workflows + references + maybe templates). Present: "Based on the source material, this is [complexity]. Does that feel right?"
 
-### Question 2: Invocation
-
-"What should trigger this skill?"
-
-- **Manual only** — User invokes via /command (set `disable-model-invocation: true`)
-- **Auto-detect** — Claude loads when relevant (description-driven)
-- **Both** — User can invoke manually, Claude can also auto-detect (default)
-
-### Question 3: Interactivity
-
-"How interactive should this skill be?"
-
-- **Guided** — Discovery phase, multiple questions, wait gates (like design-portfolio-assistant)
-- **Direct** — User provides input, skill executes immediately
-- **Adaptive** — Ask 1-2 clarifying questions, then execute (like language-market-fit)
-
-### Question 4: Modes
-
-"Does this skill need multiple modes?"
+**Q3 — Modes:** "Does this skill need multiple modes?"
 
 - **Yes** — [Ask user to describe the modes]
 - **No** — Single workflow
 - **Not sure** — "Based on the source material, I'd suggest [recommendation]. Does that feel right?"
 
-### Question 5: Complexity
+**Wait gate:** Confirm the form before moving to integration questions.
 
-"How complex is the knowledge?" (determines file structure)
+### Group 2: Integration
 
-- **Simple** — Everything fits in one file (<200 lines of instruction)
-- **Medium** — Needs 1-3 reference files for depth
-- **Complex** — Multiple workflows + references + maybe templates
+**Q4 — Invocation:** "What should trigger this skill?"
 
-### Question 6: Target Agents
+- **Manual only** — User invokes explicitly (set `disable-model-invocation: true`)
+- **Auto-detect** — Agent loads when relevant (description-driven)
+- **Both** — User can invoke manually, agent can also auto-detect (default)
 
-"Where will this skill be used?"
+**Q5 — Interactivity:** "How interactive should this skill be?"
 
-- **Claude Code only** — Personal/team use, can use all Claude Code features (AskUserQuestion, Agent tool, allowed-tools, etc.) without fallbacks
-- **Claude Code primary, others welcome** (recommended for public skills) — Build for Claude Code but include plain-text fallbacks so other agents (Cursor, Codex, Kimi CLI, etc.) can use it
-- **Universal** — Must work equally well across all agents. No Claude Code-specific features — use action-oriented language throughout, no AskUserQuestion, no Agent tool references
+- **Guided** — Discovery phase, multiple questions, wait gates
+- **Direct** — User provides input, skill executes immediately
+- **Adaptive** — Ask 1-2 clarifying questions, then execute
+
+**Q6 — Target agents:** "Where will this skill be used?" (Ask only when the lane or publication implies multiple agents; Quick Personal defaults to "current agent only" and skips.)
+
+- **Single host (current agent only)** — Can use that host's native features without fallbacks
+- **Primary host, others welcome** (recommended for public skills) — Build for the primary host but include plain-text fallbacks so other agents can use it
+- **Universal** — Must work equally well across all agents; action-oriented language, no host-specific features
 
 This answer shapes the build:
-- **Claude Code only:** Use AskUserQuestion freely, reference specific tools, use `allowed-tools` and `context: fork` without concern
-- **Claude Code primary:** Use AskUserQuestion with plain-text fallbacks, action-oriented language for instructions, `allowed-tools` is fine (ignored by other agents)
-- **Universal:** Plain-text questions only, no tool-name references, no agent-specific features
+- **Single host:** Use native question/option rendering freely, reference specific tools
+- **Primary + others:** Option rendering with plain-text fallback, action-oriented language; host-specific fields (e.g., `allowed-tools`) are fine — other hosts ignore them
+- **Universal:** Plain-text questions only, no tool-name references, no host-specific features
 
-For Quick Personal skills, ask this only when the user mentions multiple agents or publication. Otherwise default to Claude Code only and keep moving.
+For Quick Personal skills, ask this only when the user mentions multiple agents or publication. Otherwise default to single host and keep moving.
 
 ### Research Gate
 
@@ -152,7 +139,7 @@ If the skill involves external APIs, libraries, or domains where best practices 
 
 > This involves [X]. Want me to research current best practices before building, or do you have enough context?
 
-If research requested: spawn 2-3 parallel Sonnet agents with scoped questions (one per topic). Present findings before proceeding.
+If research requested: spawn 2-3 parallel sub-agents with scoped questions (one per topic). Present findings before proceeding.
 
 ---
 
@@ -304,10 +291,11 @@ Present the validation report:
 
 ## Step 9: Eval & Smoke Test Review
 
-Run or simulate the evaluation plan from Step 4.
+Run the evaluation plan from Step 4 **for real** — record what the agent actually did, not what you expected. Every prompt also gets a **no-skill baseline run**: if with-skill and baseline behave identically, the prompt has no discriminating power (ceiling effect); replace it or add a behavioral assertion (rounds taken, when a tactic switches).
 
 ### Quick Personal
-- Run the 1-3 smoke prompts mentally or in the current agent session
+- Run the 1-3 smoke prompts for real: one positive trigger, one representative task, and (if applicable) one non-trigger
+- Run each prompt once more without the skill as the baseline
 - Fix obvious trigger, workflow, or verbosity problems
 - Report any prompt you could not test
 
@@ -351,118 +339,11 @@ Present:
 
 ---
 
-## Step 11: Generate README
+## Step 11-13: Ship (README, Review, Publish) — Manual Only
 
-Generate a README only when the lane calls for it:
+README generation, independent review, and publication have external side effects (public repo, distribution). They are isolated in a dedicated manual entry point so an auto-triggered creation flow can never reach them:
 
-- **Quick Personal:** skip unless requested
-- **Team Internal:** ask whether a short README would help installation or handoff
-- **Public Polished:** required
-
-Create `README.md` alongside SKILL.md with:
-
-1. **Skill name** as heading
-2. **Install command** prominently displayed:
-   ```
-   npx skills add <owner/repo>
-   ```
-   Use a placeholder (`owner/repo-name`) if not yet published. Update later if the user publishes.
-3. **What it does** — 2-3 sentences explaining the skill's purpose
-4. **Who it's for** — target audience and common use cases
-5. **Usage examples** — invocation commands (`/skill-name`, `/skill-name argument`)
-6. **What's inside** — file tree showing SKILL.md + references
-7. **Compatibility** — based on the target agent answer from Step 3:
-   - Claude Code only: "Built for Claude Code."
-   - Claude Code primary: "Built for Claude Code. Degrades gracefully on other agents (Cursor, Codex, Kimi CLI, etc.)."
-   - Universal: "Works across all coding agents."
-8. **License** — MIT unless user specifies otherwise
-
-Keep the README concise — under 100 lines. It's a landing page, not documentation.
-
----
-
-## Step 12: Independent Review (Optional)
-
-For Public Polished skills, offer a fresh-eyes review from an independent sub-agent. For Team Internal skills, offer it when the skill is complex or high-impact. Skip by default for Quick Personal skills.
-
-> Skill looks good from my end. Want me to get a second opinion? I can spawn an independent review agent that reads the skill cold — no context from our building conversation — and flags anything it catches.
-
-If AskUserQuestion is available:
-- **Yes, get a second opinion** — Spawn review agent for fresh-eyes feedback
-- **No, ship it** — Skill is ready as-is
-
-If the user opts in:
-
-### Spawn the Review Agent
-
-Read `references/independent-review-brief.md` for the full review instructions.
-
-Spawn one sub-agent (Sonnet — fast and sharp enough for review work) with this brief:
-
-> You are an independent reviewer evaluating a freshly built skill. You were NOT involved in building it — that's the point.
->
-> **Skill to review:** [full path to skill directory]
->
-> **Your instructions are in:** [path to skill-distillery]/references/independent-review-brief.md — read that first.
->
-> **Also read these skill-distillery references for evaluation criteria:**
-> - references/synthesis-patterns.md
-> - references/interactive-design-patterns.md
-> - references/architecture-decisions.md
->
-> Then read the entire skill (all files) and evaluate it according to the review brief. Return structured findings.
-
-### Filter and Present
-
-When the review agent returns findings, **don't just pass them through**. Act as a filter:
-
-For each finding, give your honest assessment:
-
-```
-REVIEW FINDING: [Title]
-Severity: [Critical / Important / Nit]
-Reviewer says: [Their observation]
-My take: [AGREE / DISAGREE / PARTIALLY AGREE] — [Brief rationale from your building context]
-```
-
-Be honest. If the reviewer caught something you missed, say so. If you disagree, explain why — you have context the reviewer doesn't. The user benefits from seeing both perspectives.
-
-After presenting all findings with your assessments:
-
-> These are the reviewer's findings with my take on each. Which ones would you like me to fix?
-
-If AskUserQuestion is available, present fixable items as selectable options. Otherwise ask for numbers.
-
-Implement selected fixes, then confirm what changed.
-
----
-
-## Step 13: Publication (Optional)
-
-For Public Polished skills, offer publication for `npx skills` installation. Skip this step for Quick Personal and Team Internal skills unless the user asks to publish.
-
-> Want to publish this skill to GitHub so anyone can install it with `npx skills add`?
-
-If AskUserQuestion is available:
-- **Yes, create a GitHub repo** — Create a public repo, push the skill files, and update the README with the real install command
-- **No, keep it local** — Skill stays in the local skills directory
-
-If the user opts in:
-
-1. Create a public GitHub repo via `gh repo create <skill-name> --public`
-2. Copy all skill files (SKILL.md, references/, README.md) into a temp directory
-3. Initialize git, commit, and push
-4. Update the README.md install command from placeholder to the real `owner/repo`
-5. Present the repo URL and install command:
-
-> Published at: https://github.com/<owner>/<repo>
->
-> Anyone can install with:
-> ```
-> npx skills add <owner>/<repo>
-> ```
->
-> It will auto-appear on skills.sh once people start installing it.
+**See `workflows/publish.md`.** Run it only when the user explicitly asks to publish or ship. Never auto-trigger it.
 
 ---
 
@@ -480,7 +361,5 @@ This workflow is complete when:
 - [ ] Quality checklist passed
 - [ ] Eval or smoke test review completed at the chosen depth
 - [ ] Cross-agent compatibility reviewed when lane/target agents require it
-- [ ] README.md generated when lane requires it
-- [ ] Independent review offered when lane requires or warrants it
-- [ ] Publication offered only for public/publishable skills
+- [ ] Shipping (README, review, publish) deferred to the manual-only `workflows/publish.md` — never auto-triggered
 - [ ] User can invoke the skill and it works as designed

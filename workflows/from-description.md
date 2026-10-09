@@ -138,11 +138,7 @@ From here, follow the same process as the source-material workflow:
 
 **Step 10: Cross-Agent Compatibility Review** — Evaluate cross-agent support when the lane or target agents require it. See `workflows/from-source-material.md` Step 10.
 
-**Step 11: Generate README** — Create a README only when the lane requires it or the user requests it. See `workflows/from-source-material.md` Step 11.
-
-**Step 12: Independent Review (Optional)** — Offer fresh-eyes review when the lane requires or warrants it. See `workflows/from-source-material.md` Step 12.
-
-**Step 13: Publication (Optional)** — Offer publication for public/publishable skills. See `workflows/from-source-material.md` Step 13.
+**Step 11-13: Ship (README, Review, Publish)** — Manual only, never auto-triggered. See `workflows/publish.md`.
 
 ---
 
@@ -160,6 +156,4 @@ This workflow is complete when:
 - [ ] Quality checklist passed
 - [ ] Eval or smoke test review completed at the chosen depth
 - [ ] Cross-agent compatibility reviewed when lane/target agents require it
-- [ ] README.md generated when lane requires it
-- [ ] Independent review offered when lane requires or warrants it
-- [ ] Publication offered only for public/publishable skills
+- [ ] Shipping (README, review, publish) deferred to the manual-only `workflows/publish.md` — never auto-triggered
