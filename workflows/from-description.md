@@ -120,10 +120,11 @@ Follow the Research Protocol from SKILL.md:
 
 ## Step 3-13: Convergent Process
 
-From here, follow the same process as the source-material workflow — **the single source of truth is `workflows/from-source-material.md`**; don't maintain a parallel copy here:
+From here, follow the same process as the source-material workflow — **single source of truth; no parallel copies here**:
 
-- **Steps 3-10: Strategy → Evaluation Plan → Architecture → Build → Gotchas → Validate → Eval & Smoke Test → Cross-Agent Compatibility** — follow `workflows/from-source-material.md` in order.
-- **Steps 11-13: Ship (README, Review, Publish)** — manual only, via `workflows/publish.md`. Never auto-triggered.
+- **Steps 3-5: Skill Strategy → Evaluation Plan → Architecture Proposal** — `workflows/from-source-material.md`
+- **Steps 6-10: Build → Gotchas → Validate → Eval & Smoke Test → Cross-Agent** — `workflows/build-and-validate.md`
+- **Steps 11-13: Ship (README, Review, Publish)** — manual only, `workflows/publish.md`. Never auto-triggered.
 
 ---
 
@@ -132,13 +133,6 @@ From here, follow the same process as the source-material workflow — **the sin
 This workflow is complete when:
 - [ ] User's intent clearly understood (via detailed description or brainstorming)
 - [ ] Research done if external dependencies involved
-- [ ] Rigor lane selected
-- [ ] Strategy decisions made interactively
-- [ ] Evaluation plan matches the lane
-- [ ] Architecture proposed and approved
-- [ ] All files created following official spec
-- [ ] Gotchas section reviewed and populated
-- [ ] Quality checklist passed
-- [ ] Eval or smoke test review completed at the chosen depth
-- [ ] Cross-agent compatibility reviewed when lane/target agents require it
+- [ ] Strategy decisions made interactively and architecture approved (Steps 3-5)
+- [ ] Build & validation completed per `workflows/build-and-validate.md`
 - [ ] Shipping (README, review, publish) deferred to the manual-only `workflows/publish.md` — never auto-triggered

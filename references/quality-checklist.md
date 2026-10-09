@@ -2,6 +2,8 @@
 
 Run through this checklist after building or auditing a skill. Items are grouped by category and ordered by impact.
 
+- [ ] `scripts/validate_skill.py <skill-dir>` run — errors fixed, warnings reviewed (deterministic checks: frontmatter, 1,536 cap, packaging, links, orphans, drift)
+
 ## Rigor Lane & Evaluation
 
 The skill should be as rigorous as its audience needs, and no more verbose than runtime execution requires.

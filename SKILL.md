@@ -169,7 +169,8 @@ All supporting knowledge in `references/`:
 | [from-source-material.md](workflows/from-source-material.md) | Article/talk/framework → skill (flagship workflow) |
 | [from-description.md](workflows/from-description.md) | Blank slate → brainstorm → skill |
 | [from-recent-work.md](workflows/from-recent-work.md) | Capture AI process as reusable skill |
-| [audit-existing-skill.md](workflows/audit-existing-skill.md) | Full-framework audit with 7 evaluation lenses |
+| [build-and-validate.md](workflows/build-and-validate.md) | Shared build → gotchas → validate → eval → cross-agent steps |
+| [audit-existing-skill.md](workflows/audit-existing-skill.md) | Full-framework audit with 8 evaluation lenses |
 | [add-component.md](workflows/add-component.md) | Add reference/workflow/script/template to existing skill |
 | [publish.md](workflows/publish.md) | Publish/ship a finished skill (manual only — never auto-triggered) |
 
@@ -182,3 +183,9 @@ Ready-to-copy starting points in `templates/`:
 | [simple-skill.md](templates/simple-skill.md) | Single-workflow skills under 200 lines |
 | [router-skill.md](templates/router-skill.md) | Multi-workflow skills with shared principles |
 | [eval-pack.md](templates/eval-pack.md) | Team Internal or Public Polished eval packs |
+
+## Scripts
+
+| Script | Use When |
+|--------|----------|
+| [validate_skill.py](scripts/validate_skill.py) | Deterministic checks: frontmatter, 1,536 cap, packaging warnings, link integrity, orphans, drift. Pure stdlib — runs in any environment (`python validate_skill.py <skill-dir>`). Run it during validation (see `workflows/build-and-validate.md` Step 3) |

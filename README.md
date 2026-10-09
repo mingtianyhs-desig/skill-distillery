@@ -95,6 +95,7 @@ skill-distillery/
 │   ├── from-source-material.md           # Article → skill (flagship)
 │   ├── from-description.md               # Idea → skill
 │   ├── from-recent-work.md               # Process → skill
+│   ├── build-and-validate.md             # Shared build → validate → eval steps
 │   ├── audit-existing-skill.md           # 8-lens audit framework
 │   ├── add-component.md                  # Extend existing skills
 │   └── publish.md                        # Ship/publish (manual only)
@@ -107,10 +108,12 @@ skill-distillery/
 │   ├── evaluation-patterns.md            # Rigor lanes and eval packs
 │   ├── independent-review-brief.md       # Fresh-eyes review prompt
 │   └── cross-agent-compatibility.md      # Cross-agent portability guide
-└── templates/
-    ├── simple-skill.md                   # Single-file template
-    ├── eval-pack.md                      # Team/public eval template
-    └── router-skill.md                   # Multi-file template
+├── templates/
+│   ├── simple-skill.md                   # Single-file template
+│   ├── eval-pack.md                      # Team/public eval template
+│   └── router-skill.md                   # Multi-file template
+└── scripts/
+    └── validate_skill.py                 # Deterministic validation (pure stdlib)
 ```
 
 ## Attribution
