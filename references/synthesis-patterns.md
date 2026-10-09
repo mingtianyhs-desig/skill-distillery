@@ -29,7 +29,7 @@ These are the core principles. They should be:
 3. For each theme, write one principle that captures the essence
 4. Test: "Could I explain this principle without referencing the source?" If no, it's still too tied to the original phrasing.
 
-### Example: language-market-fit
+### Example: marketing-copy skill
 
 Source: A long article about writing marketing copy that converts.
 
@@ -47,12 +47,12 @@ Notice: These aren't summary sentences. They're operational checks — things yo
 Mental models are frameworks for thinking, not instructions. Look for:
 
 - **Decision trees** — "If X, do Y. If Z, do A instead."
-- **Taxonomies** — Categories that organize the domain (e.g., dive-club's four advisor lenses)
+- **Taxonomies** — Categories that organize the domain (e.g., a design-advice skill's four advisor lenses)
 - **Spectrums** — Scales with endpoints (e.g., "high freedom ↔ low freedom")
 - **Matrices** — Two dimensions that create quadrants
 - **Process loops** — Repeating cycles (build → test → refine)
 
-### Example: design-portfolio-assistant
+### Example: portfolio-review skill
 
 Source: 16 podcast episodes with design leaders giving portfolio advice.
 

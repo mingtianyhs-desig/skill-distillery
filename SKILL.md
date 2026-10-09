@@ -95,7 +95,7 @@ When and how to research during skill creation.
 
 > This involves [X]. Want me to research current best practices, or do you have enough context?
 
-If AskUserQuestion is available:
+Per the question convention:
 - **Yes, research first** — Fetch current documentation for accurate implementation
 - **No, I have context** — Proceed with what we have
 
@@ -136,15 +136,12 @@ Detect what the user provided and route to the right workflow:
 4. Check `$ARGUMENTS` for keywords: "add reference", "add workflow", "add component" → add-component
 5. Check `$ARGUMENTS` for keywords: "capture", "just did", "turn this into" → from-recent-work
 6. If `$ARGUMENTS` contains a description → from-description
-7. If no arguments, ask:
+7. If no arguments, ask per the question convention:
 
-If AskUserQuestion is available:
 - **Turn source material into a skill** — I have an article, talk, or framework
 - **Capture recent work** — I just did something and want to save the process
 - **Describe what I want** — I'll explain what the skill should do
 - **Audit an existing skill** — Evaluate a skill I have or found
-
-Otherwise ask: "What would you like to do? (1) Turn source material into a skill, (2) Capture a recent process, (3) Describe what I want, (4) Audit an existing skill"
 
 **After selecting a workflow, read it and follow it exactly.**
 

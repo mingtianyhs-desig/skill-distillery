@@ -12,7 +12,7 @@ Skill-distillery is a skill that creates skills. It works from four entry points
 
 **From recent work** (`/skill-distillery capture`) — Just did something with AI and want to save the process? It extracts the repeatable workflow, decision points, and gotchas, then packages them as a reusable skill.
 
-**Audit an existing skill** (`/skill-distillery audit ~/.claude/skills/my-skill`) — Runs any skill through a seven-lens evaluation framework: rigor and evals, gotchas, synthesis quality, architecture, interactive design, spec compliance, and cross-agent compatibility. Produces a rated assessment with prioritized improvements.
+**Audit an existing skill** (`/skill-distillery audit ~/.claude/skills/my-skill`) — Runs any skill through an eight-lens evaluation framework: rigor and evals, gotchas, security and trust, synthesis quality, architecture, interactive design, spec compliance, and cross-agent compatibility. Produces a rated assessment with prioritized improvements.
 
 ## The approach
 
@@ -33,7 +33,7 @@ Skill-distillery now right-sizes the output for three lanes:
 Skill-distillery works with any agent that supports skills, but it's designed to shine on **Claude Code** thanks to:
 
 - **AskUserQuestion** — Tappable multiple-choice options for strategy decisions
-- **Parallel research agents** — Spawns Sonnet agents for fast, scoped research when needed
+- **Parallel research agents** — Spawns parallel research agents for fast, scoped research when needed
 - **Agent tool** — Launches specialized subagents for deep research
 
 On other agents, these features degrade gracefully — AskUserQuestion becomes a plain-text question, parallel research becomes sequential, and the core workflow works the same way.
@@ -82,6 +82,7 @@ git clone https://github.com/kylezantos/skill-distillery.git ~/.claude/skills/sk
 /skill-distillery capture
 /skill-distillery audit ~/.claude/skills/my-skill
 /skill-distillery add reference
+/skill-distillery publish        # ship a finished skill (manual only)
 /skill-distillery
 ```
 
@@ -94,10 +95,11 @@ skill-distillery/
 │   ├── from-source-material.md           # Article → skill (flagship)
 │   ├── from-description.md               # Idea → skill
 │   ├── from-recent-work.md               # Process → skill
-│   ├── audit-existing-skill.md           # 7-lens audit framework
-│   └── add-component.md                  # Extend existing skills
+│   ├── audit-existing-skill.md           # 8-lens audit framework
+│   ├── add-component.md                  # Extend existing skills
+│   └── publish.md                        # Ship/publish (manual only)
 ├── references/
-│   ├── official-spec.md                  # 2026 skill specification
+│   ├── official-spec.md                  # Skill specification (live docs authoritative)
 │   ├── synthesis-patterns.md             # Bottom-up extraction methodology
 │   ├── architecture-decisions.md         # When to use simple vs. router
 │   ├── interactive-design-patterns.md    # Discovery, modes, wait gates

@@ -99,7 +99,7 @@ After initial questions and type identification:
 
 > Ready to proceed with building, or would you like to explore more?
 
-If AskUserQuestion is available:
+Per the question convention:
 - **Proceed** — I have enough context to propose an approach
 - **Explore more** — There are more details to clarify
 - **Let me add context** — I want to provide additional information

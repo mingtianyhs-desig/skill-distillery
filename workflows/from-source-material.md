@@ -243,7 +243,7 @@ For each file:
 - Include concrete examples from the source material
 - Keep research notes, rationale, and eval prompts out of SKILL.md unless needed at runtime
 
-If decisions arise during build, use AskUserQuestion or ask in plain text. Don't guess on important choices.
+If decisions arise during build, follow the question convention (options when supported, numbered plain text otherwise). Don't guess on important choices.
 
 ---
 

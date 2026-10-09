@@ -58,12 +58,10 @@ Structure: [Simple / Simple + References / Router]
 
 Ask: "What's the context for this audit?"
 
-If AskUserQuestion is available:
+Per the question convention:
 - **I built this** — Give me improvement suggestions I can implement
 - **Plugin/marketplace skill** — Tell me what I'd change if it were mine
 - **Evaluating before installing** — Help me decide if it's worth using
-
-Otherwise ask: "Did you build this, install it from a plugin, or are you evaluating it?"
 
 This calibrates the audit tone: your own skill gets constructive suggestions, an external skill gets an honest assessment.
 
@@ -278,13 +276,7 @@ PRIORITY IMPROVEMENTS:
 
 ## Step 11: Implement Improvements
 
-Present improvements as a selectable list.
-
-If AskUserQuestion is available (multi-select):
-- Each improvement as an option with description
-- User taps which ones to implement
-
-Otherwise: "Which improvements would you like me to implement? List the numbers."
+Present improvements as a selectable list. Per the question convention (multi-select when supported): each improvement as an option with description. Otherwise: "Which improvements would you like me to implement? List the numbers."
 
 ### For each selected improvement:
 1. Read the relevant file(s)

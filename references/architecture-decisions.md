@@ -118,16 +118,16 @@ references/
 └── principles.md
 ```
 
-## Architecture Comparison: Kyle's Skills
+## Architecture Comparison: Structural Patterns
 
-| Skill | Structure | Files | Why it works |
-|-------|-----------|-------|-------------|
-| language-market-fit | Simple + 1 ref | 2 | Two modes but shared principles; reference holds operational tools (kill list, interview framework) |
-| design-portfolio-assistant | Router-like | 12 | 4 advisory lenses loaded conditionally; 2 modes with shared discovery phase |
-| visual-taste | Complex router | 15+ | Multiple designers, nested examples, feedback loops |
-| soleio-design-hiring | Simple | 2 | Two modes but simple enough for one file |
+| Pattern | Files | Why it works |
+|---------|-------|-------------|
+| Simple + single reference | 2 | Two modes but shared principles; the reference holds the operational tools |
+| Router with shared discovery | ~12 | Multiple advisory lenses loaded conditionally; one shared discovery phase |
+| Complex router | 15+ | Multiple knowledge domains, nested examples, feedback loops |
+| Single-file dual-mode | 2 | Two modes but simple enough for one file |
 
-**Key insight from this comparison:** File count should match knowledge diversity, not skill complexity. dive-club has many files because it has 4 distinct knowledge bases (lenses). language-market-fit is complex but all the knowledge is one domain, so 2 files suffice.
+**Key insight from this comparison:** File count should match knowledge diversity, not skill complexity — a skill with 4 distinct knowledge bases (lenses) earns its many files, while a complex skill whose knowledge is one domain gets by with 2.
 
 ## SKILL.md Content Rules
 

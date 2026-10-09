@@ -1,6 +1,6 @@
 # Interactive Design Patterns
 
-Patterns for making skills interactive, strategic, and responsive to user context. Extracted from high-performing skills (design-portfolio-assistant, language-market-fit, soleio-design-hiring).
+Patterns for making skills interactive, strategic, and responsive to user context. Distilled from high-performing skills; examples are abstracted so they apply to any domain.
 
 ## Pattern 1: Discovery-First Intake
 
@@ -65,9 +65,9 @@ Accepts `$ARGUMENTS` for direct mode selection:
 > Which one? And what's the product/page?
 ```
 
-### Via AskUserQuestion (tappable)
+### Via options (tappable)
 ```markdown
-Use AskUserQuestion with options:
+Render tappable options:
 - "Compose" — Write new [thing] from scratch
 - "Audit" — Evaluate and improve existing [thing]
 ```
@@ -118,23 +118,22 @@ STOP. Do not proceed until the user:
 
 **Common mistake:** Adding so many wait gates that the skill feels bureaucratic. Use them at genuine decision points, not after every step.
 
-## Pattern 5: AskUserQuestion Patterns
+## Pattern 5: Option-Based Decisions
 
-When `AskUserQuestion` is available, use it for tappable multiple-choice decisions.
+For small multiple-choice decisions (2-4 options), render tappable options when the runtime supports them; otherwise ask the same question as numbered plain text. State this convention once in SKILL.md — don't write both branches at every decision point.
 
-### When to use AskUserQuestion
+### When to use tappable options
 - Binary or small-set decisions (2-4 options)
 - When options have clear labels and descriptions
 - When tapping is faster than typing
 
-### When NOT to use AskUserQuestion
+### When NOT to use tappable options
 - Open-ended questions ("What problem does this solve?")
 - When you need detailed context (use plain text conversation)
 - When there are more than 4 distinct options
 
 ### Effective option design
 ```markdown
-Use AskUserQuestion:
 Question: "How interactive should this skill be?"
 Options:
 1. "Guided" — Discovery phase, multiple questions, wait gates
@@ -146,13 +145,8 @@ Options:
 - A short label (1-3 words)
 - A description that explains the implication (what happens if you choose this)
 
-### Fallback for non-Claude agents
-Always include a plain-text version nearby:
-
-```markdown
-If AskUserQuestion is available, present as tappable options. Otherwise, ask:
-"How interactive should this skill be? (1) Guided with discovery, (2) Direct execution, (3) Adaptive with light clarification"
-```
+### Rendering across agents
+Follow the question convention: options when supported, numbered plain-text otherwise. No per-decision fallback boilerplate.
 
 ## Pattern 6: Shortcut Detection
 
@@ -172,13 +166,13 @@ If provided, skip redundant questions. Present extracted understanding for
 confirmation instead of asking from scratch.
 ```
 
-**Example from dive-club:** If user provides a resume file, the skill reads it and skips the "What's your role? What's your career stage?" questions — presents extracted understanding for confirmation instead.
+**Example:** If the user provides a resume file, the skill reads it and skips the "What's your role? What's your career stage?" questions — presents extracted understanding for confirmation instead.
 
 ## Pattern 7: Stress-Testing
 
 Before finalizing output, challenge your own work from the user's perspective.
 
-**Implementation (from language-market-fit):**
+**Implementation:**
 
 ```markdown
 ### Phase 4: Stress-Test Together
@@ -197,7 +191,7 @@ Don't just present final output — walk the user through your stress-test:
 
 Be explicit about what's grounded in evidence vs. what's inferred.
 
-**Implementation (from language-market-fit):**
+**Implementation:**
 
 ```markdown
 For each recommendation:

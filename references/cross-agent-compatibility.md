@@ -29,13 +29,12 @@ These only work in Claude Code. Each needs a fallback strategy:
 ```markdown
 ## Step 3: Choose Approach
 
-If AskUserQuestion is available, present as tappable options:
+Per the question convention, present as tappable options (or numbered plain text):
 - "Guided" — Full discovery phase with multiple questions
 - "Direct" — Execute immediately from provided input
 - "Adaptive" — Light clarification, then execute
 
-Otherwise, ask: "How interactive should this skill be?
-(1) Guided with discovery, (2) Direct execution, (3) Adaptive"
+Question: "How interactive should this skill be?"
 ```
 
 ### `Agent` Tool / Subagent Spawning
@@ -127,8 +126,7 @@ Tool names in `allowed-tools` are fine — this field is Claude Code-specific an
 ### Pattern: Conditional Feature
 
 ```markdown
-If AskUserQuestion is available, use it for the following decision.
-Otherwise, ask the question in plain text and wait for a response.
+Present the decision per the question convention (tappable options when supported, plain-text otherwise) and wait for a response.
 ```
 
 ### Pattern: Research Agent with Sequential Fallback

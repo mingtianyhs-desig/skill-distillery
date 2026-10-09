@@ -101,8 +101,7 @@ Read these reference files before proceeding:
 
 {{What to do.}}
 
-If AskUserQuestion is available, present decision as tappable options.
-Otherwise, ask: "{{plain-text version of the question}}"
+Present the decision per the question convention (tappable options when supported, numbered plain text otherwise): "{{question with options}}"
 
 ## Step 3: {{Third Action}}
 
@@ -157,4 +156,4 @@ Common failure points — where Claude gets this wrong:
 - **Workflows:** Each should be self-contained with Required Reading + Steps + Success Criteria
 - **References:** Organized by domain concern, not by document type
 - **Wait gates:** At discovery completion and before building/implementing
-- **AskUserQuestion:** Always include plain-text fallback for cross-agent compatibility
+- **Question convention:** Declare it once in the built SKILL.md (options when supported, numbered plain text otherwise); don't repeat fallback branches in every workflow

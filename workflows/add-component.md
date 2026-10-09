@@ -23,13 +23,11 @@ Present:
 >
 > What would you like to add?
 
-If AskUserQuestion is available:
+Per the question convention (tappable options when supported, numbered plain text otherwise):
 - **Reference file** — Domain knowledge that workflows can load
 - **Workflow** — Step-by-step procedure for a new user intent
 - **Script** — Executable code for deterministic tasks
 - **Template** — Output structure for consistent results
-
-Otherwise ask: "What type of component? (reference, workflow, script, or template)"
 
 ---
 
