@@ -120,25 +120,10 @@ Follow the Research Protocol from SKILL.md:
 
 ## Step 3-13: Convergent Process
 
-From here, follow the same process as the source-material workflow:
+From here, follow the same process as the source-material workflow — **the single source of truth is `workflows/from-source-material.md`**; don't maintain a parallel copy here:
 
-**Step 3: Skill Strategy** — Choose the rigor lane, then make interactive decisions about invocation, interactivity, modes, complexity, and target agents. See `workflows/from-source-material.md` Step 3.
-
-**Step 4: Evaluation Plan** — Define smoke prompts or an eval pack based on the lane. See `workflows/from-source-material.md` Step 4.
-
-**Step 5: Architecture Proposal** — Propose exact file structure with rationale. Wait for approval. See `workflows/from-source-material.md` Step 5.
-
-**Step 6: Build** — Create all files following official spec. See `workflows/from-source-material.md` Step 6.
-
-**Step 7: Gotchas Review** — Ensure gotchas section is populated with real Claude failure modes. See `workflows/from-source-material.md` Step 7.
-
-**Step 8: Validate** — Run quality checklist. See `workflows/from-source-material.md` Step 8.
-
-**Step 9: Eval & Smoke Test Review** — Run or simulate the planned checks. See `workflows/from-source-material.md` Step 9.
-
-**Step 10: Cross-Agent Compatibility Review** — Evaluate cross-agent support when the lane or target agents require it. See `workflows/from-source-material.md` Step 10.
-
-**Step 11-13: Ship (README, Review, Publish)** — Manual only, never auto-triggered. See `workflows/publish.md`.
+- **Steps 3-10: Strategy → Evaluation Plan → Architecture → Build → Gotchas → Validate → Eval & Smoke Test → Cross-Agent Compatibility** — follow `workflows/from-source-material.md` in order.
+- **Steps 11-13: Ship (README, Review, Publish)** — manual only, via `workflows/publish.md`. Never auto-triggered.
 
 ---
 
