@@ -146,6 +146,8 @@ Detect what the user provided and route to the right workflow:
 
 ### Detection Logic
 
+If the runtime substitutes `$ARGUMENTS` (Claude Code), use it directly. Otherwise, treat the user's current message as `$ARGUMENTS` — most runtimes pass the user's input there or append it automatically.
+
 1. Check `$ARGUMENTS` for URLs → from-source-material
 2. Check `$ARGUMENTS` for file paths → read the file, determine if it's a skill (has YAML frontmatter with `name`/`description`) or source material
 3. Check `$ARGUMENTS` for keywords: "audit", "review", "evaluate", "improve" → audit-existing-skill
