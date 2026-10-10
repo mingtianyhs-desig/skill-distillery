@@ -84,6 +84,10 @@ Present the validation report:
 
 Run the evaluation plan **for real** — record what the agent actually did, not what you expected. Every prompt also gets a **no-skill baseline run**: if with-skill and baseline behave identically, the prompt has no discriminating power (ceiling effect); replace it or add a behavioral assertion (rounds taken, when a tactic switches).
 
+### Change-Scoped Runs (after an iteration, not the full suite)
+
+After a change — not at a ship/milestone gate — run only the evals whose assertions touch the changed area, not the whole suite. First map the change to affected evals: which sections, stages, or behaviors did it touch, and which evals assert those? Run just those, plus their no-skill baselines. The full suite runs at ship/milestone gates, where the cost is justified. When the change-to-eval mapping is uncertain, run more rather than less — anything skipped still gets caught at the gate. This keeps the recurring iteration cost cheap without lowering the ship bar. (The lane rules below set run *depth*; the ship gate sets suite *breadth*.)
+
 ### Quick Personal
 
 - Run the 1-3 smoke prompts for real: one positive trigger, one representative task, and (if applicable) one non-trigger
