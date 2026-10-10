@@ -74,7 +74,7 @@ Where this skill itself typically fails — "don't do X because Y." These are th
 - **Don't pad SKILL.md with optional depth** — because SKILL.md is the activation-time execution core: the agent reads all of it when the skill runs, so clarity and completeness for the common activation beat brevity. Push only genuinely-optional depth (edge cases, deep rationale) into references so activations that don't need it don't pay for it. The description is the every-turn cost — keep THAT lean; treat the 300-line cap as a guardrail, not a goal.
 - **Don't leave publishing reachable from an auto-triggered flow** — because `gh repo create --public` with no human in the loop is a footgun, not a feature. Publishing lives behind a manual entry point plus a confirmation gate.
 - **Don't hard-code models, hosts, or years** — because the skill is agent-agnostic by design. "`Use Sonnet for this`" or "`as of 2026`" will be wrong on another host and read as sloppiness here. Use 'current' phrasing and leave the model unset.
-- **Don't trust lens ratings alone** — because ratings are opinions calibrated to your reading, and mechanical drift (orphaned files, broken links, stale README trees, duplicated checklists that diverged) hides under "all strong" ratings. Run a cross-consistency scan (orphan check, link resolution, §-ref integrity, README/evals sync) before presenting an audit; the scan catches what the lenses miss.
+- **Don't trust lens ratings alone** — because ratings are opinions calibrated to your reading, and mechanical drift (orphaned files, broken links, stale README trees, duplicated checklists that diverged) hides under "all strong" ratings. Run the cross-consistency scan ([cross-consistency-scan.md](references/cross-consistency-scan.md)) before presenting an audit; the scan catches what the lenses miss.
 
 ---
 
@@ -164,6 +164,7 @@ All supporting knowledge in `references/`:
 | [architecture-decisions.md](references/architecture-decisions.md) | Simple vs. router, when to use each file type | Architecture proposal step (all workflows) |
 | [interactive-design-patterns.md](references/interactive-design-patterns.md) | Discovery, modes, wait gates, AskUserQuestion | Strategy step and audit workflow |
 | [quality-checklist.md](references/quality-checklist.md) | Validation checklist | Validate step (all workflows) |
+| [cross-consistency-scan.md](references/cross-consistency-scan.md) | Mechanical scan — orphans, links, §-refs, inventory sync, redundancy (the gotcha #9 procedure) | Audit Step 10, and after any structural change |
 | [evaluation-patterns.md](references/evaluation-patterns.md) | Rigor lanes and eval pack design | Before planning validation |
 | [cross-agent-compatibility.md](references/cross-agent-compatibility.md) | Cross-agent review guide | Cross-agent review step (all workflows) |
 | [independent-review-brief.md](references/independent-review-brief.md) | Pre-baked instructions for independent review sub-agent | Optional review step in build workflows |

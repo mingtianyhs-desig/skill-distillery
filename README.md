@@ -108,6 +108,7 @@ skill-distillery/
 │   ├── architecture-decisions.md         # When to use simple vs. router
 │   ├── interactive-design-patterns.md    # Discovery, modes, wait gates
 │   ├── quality-checklist.md              # Validation checklist
+│   ├── cross-consistency-scan.md         # Mechanical scan: orphans, links, refs, sync
 │   ├── evaluation-patterns.md            # Rigor lanes and eval packs
 │   ├── cross-agent-compatibility.md      # Cross-agent portability guide
 │   └── independent-review-brief.md       # Fresh-eyes review prompt
