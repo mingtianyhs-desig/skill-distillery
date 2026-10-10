@@ -137,3 +137,27 @@ The source material has a distinctive perspective. Preserve it:
 3. **Replace stories with principles** — Anecdote → the lesson it teaches
 4. **Merge overlapping advice** — 3 slightly different ways of saying the same thing → 1 clear statement
 5. **Keep code examples short** — Minimal working example, not full application
+
+### What compression must never cut
+
+Compression removes fat, never bone. A compressed skill must still let a fresh agent execute start-to-finish without guessing. Official cap: under 500 lines / 5,000 tokens (Claude Platform Docs — "keep SKILL.md body under 500 lines for optimal performance"); the targets in "How much to keep" are preferences, not requirements. The moment you can't trace how the agent executes, you've over-compressed regardless of line count.
+
+Never cut — this is the bone:
+
+1. **Trigger clarity** — the description still fires reliably: first words say what the skill does, one trigger word per branch, the exclusion branch ("Not for") intact. Saving 5 description tokens while blurring when the skill triggers is a net loss.
+2. **Every operative step** — compression cuts *how* (explanation), never *that* (the action). A step required for the outcome stays; a missing step makes the agent guess, and a guess is a silent failure.
+3. **Ordering and dependencies** — steps stay in sequence; never merge "do A" and "only after A, do B" into something ambiguous.
+4. **Completion criteria** — the agent must still know when it's done. Cutting the checkable boundary turns "done" into a guess and invites early completion.
+5. **Decision logic and branches** — every branch and its condition survives; shorten the phrasing, never drop the branch or its default.
+6. **Single-source pointers** — every pointer (references, workflows, templates) still resolves. De-duplication may move content to the single source; it must never orphan it or leave a workflow pointing at nothing.
+
+The five rules above are safe cuts. These six items are not cuts at all — they're what the safe cuts are for.
+
+### Verify after compressing (before shipping)
+
+Run the cold-start walk: read the compressed skill as a fresh agent would — no memory of the compression, only the files. Can you execute each entry point end-to-end?
+
+1. Walk each entry point: description → SKILL.md routing → workflow → its Required Reading → validate step. Nothing missing, nothing unresolvable.
+2. For each de-duplication just done: confirm the single source is *loaded by the workflow that needs it* (in Required Reading), not merely mentioned somewhere.
+3. Run the cross-consistency scan (`references/cross-consistency-scan.md`) — mechanical consistency is the floor, not the ceiling.
+4. Completeness is verified by tracing the agent's path, not by re-reading your own compression notes. When in doubt, trace once.

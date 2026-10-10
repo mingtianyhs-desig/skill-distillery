@@ -42,6 +42,7 @@ The most valuable content in any skill. Gotchas document where Claude typically 
 ## Structure
 
 - [ ] SKILL.md under 500 lines (targets: <150 Quick Personal, <200 simple shared, 200-300 router)
+- [ ] If compressed/refactored: cold-start walk passed — every operative step present, ordering intact, completion criteria checkable, pointers resolve (synthesis-patterns "Compression Strategy")
 - [ ] All supporting files one level deep from SKILL.md
 - [ ] No nested reference chains (SKILL.md → ref.md → detail.md) — files referenced from other referenced files may only be partially read, so chains silently lose content
 - [ ] Every file referenced in SKILL.md actually exists
