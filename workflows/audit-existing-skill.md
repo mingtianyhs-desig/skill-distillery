@@ -24,10 +24,10 @@ Run the Mechanism Gate before auditing content — see the Mechanism Gate sectio
 ### Locate and Read
 
 - If user provides a path to a skill directory → read everything in it
-- If user provides a SKILL.md path → read it and glob for siblings
+- If user provides a SKILL.md path → read it and find sibling files
 - If user provides a skill name → search `~/.claude/skills/`, `.claude/skills/`, and plugin caches
 
-Glob for all files in the skill directory:
+Find all files in the skill directory:
 ```
 [skill-name]/
 ├── SKILL.md
