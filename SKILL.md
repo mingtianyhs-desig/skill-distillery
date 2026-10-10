@@ -67,13 +67,13 @@ These apply to everything skill-distillery does:
 Where this skill itself typically fails — "don't do X because Y." These are the highest-signal lines in the whole skill.
 
 - **Don't restructure source material into a skill** — because reformatted paragraphs are content, not strategy. Extract 3-7 principles and the mental model first; if you can't articulate them, you haven't read the source.
-- **Don't skip Step 2's source-confirmation gate** — because synthesizing the wrong source is faster than fixing a wrong skill, and the user's intent is never in the article.
-- **Don't build before the Mechanism Gate** — because a hook's job can't be fixed by better skill content. You'll ship a skill that never runs, and the user's failure will look like your failure.
+- **Don't skip Step 2's source-confirmation gate** — because synthesizing the wrong source is faster than fixing a wrong skill, and the user's intent is never in the article. Confirm the source and intent before extracting.
+- **Don't build before the Mechanism Gate** — because a hook's job can't be fixed by better skill content. You'll ship a skill that never runs, and the user's failure will look like your failure. Run the gate first; if it's a hook, name the mechanism and stop.
 - **Don't treat confirmation as agreement with your hypothesis** — because "OK, go" is often the polite answer to the wrong assumption. Write the hypothesis down first so it can be proven wrong.
 - **Don't validate by mentally running the workflow** — because your imagination is calibrated to your own reading, not the reader's. Run the prompts against a no-skill baseline; if both behave identically, the prompt proves nothing.
 - **Don't let SKILL.md grow past the reader's attention** — because it lands in context on every turn and burns tokens whether or not it is used. Push detail into references; keep SKILL.md under 300 lines.
 - **Don't leave publishing reachable from an auto-triggered flow** — because `gh repo create --public` with no human in the loop is a footgun, not a feature. Publishing lives behind a manual entry point plus a confirmation gate.
-- **Don't hard-code models, hosts, or years** — because the skill is agent-agnostic by design. "`Use Sonnet for this`" or "`as of 2026`" will be wrong on another host and read as sloppiness here.
+- **Don't hard-code models, hosts, or years** — because the skill is agent-agnostic by design. "`Use Sonnet for this`" or "`as of 2026`" will be wrong on another host and read as sloppiness here. Use 'current' phrasing and leave the model unset.
 
 ---
 

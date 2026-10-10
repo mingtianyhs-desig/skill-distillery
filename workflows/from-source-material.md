@@ -15,7 +15,7 @@ Read these reference files before proceeding:
 
 Detect what the user provided and ingest it:
 
-- **URL** — Fetch with WebFetch, extract the content
+- **URL** — Fetch the content at the URL
 - **File path** — Read the file (supports .md, .pdf, .txt, .html)
 - **Pasted content** — Work with what's in the conversation
 

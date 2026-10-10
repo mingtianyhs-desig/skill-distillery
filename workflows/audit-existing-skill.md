@@ -106,7 +106,26 @@ The most valuable content in any skill. Evaluate this first.
 
 ---
 
-## Step 4: Synthesis Quality Review
+## Step 4: Security & Trust Review
+
+Evaluate the skill as untrusted third-party content — it's code plus instructions that enter the agent's trusted context. Audit skills like dependencies, especially when the user found it online. (Evaluated early alongside gotchas — these are the highest-signal lenses.)
+
+**Questions to assess:**
+- Does the skill include scripts? Are their behaviors readable and scoped to what the skill claims?
+- Any network calls, data exfiltration, credential reading, or hidden prompts?
+- Any instruction shaped to override the host's rules (prompt-injection forms)?
+- Do declared permissions match actual needs (e.g., `allowed-tools` broader than necessary)?
+- Irreversible operations — is there an explicit confirmation gate before them?
+- Does the skill promise something in the description that its instructions don't actually do?
+
+**Rating:**
+- **Trusted** — No risky patterns; behavior matches the description
+- **Needs attention** — One or more risky patterns present; document them and decide before installing
+- **High risk** — Credential handling, raw script execution from an untrusted source, or hidden behavior; recommend not installing as-is
+
+---
+
+## Step 5: Synthesis Quality Review
 
 Evaluate the skill's intellectual foundation.
 
@@ -125,7 +144,7 @@ Evaluate the skill's intellectual foundation.
 
 ---
 
-## Step 5: Architecture Review
+## Step 6: Architecture Review
 
 Evaluate the file structure.
 
@@ -144,7 +163,7 @@ Evaluate the file structure.
 
 ---
 
-## Step 6: Interactive Design Review
+## Step 7: Interactive Design Review
 
 Evaluate how the skill handles user interaction.
 
@@ -166,7 +185,7 @@ Evaluate how the skill handles user interaction.
 
 ---
 
-## Step 7: Spec Compliance Review
+## Step 8: Spec Compliance Review
 
 Evaluate against the official specification.
 
@@ -186,25 +205,6 @@ Evaluate against the official specification.
 - **Fully compliant** — All checklist items pass
 - **Minor issues** — 1-3 items need fixes (cosmetic or low-impact)
 - **Needs fixes** — 4+ items fail or critical issues present
-
----
-
-## Step 8: Security & Trust Review
-
-Evaluate the skill as untrusted third-party content — it's code plus instructions that enter the agent's trusted context. Audit skills like dependencies, especially when the user found it online.
-
-**Questions to assess:**
-- Does the skill include scripts? Are their behaviors readable and scoped to what the skill claims?
-- Any network calls, data exfiltration, credential reading, or hidden prompts?
-- Any instruction shaped to override the host's rules (prompt-injection forms)?
-- Do declared permissions match actual needs (e.g., `allowed-tools` broader than necessary)?
-- Irreversible operations — is there an explicit confirmation gate before them?
-- Does the skill promise something in the description that its instructions don't actually do?
-
-**Rating:**
-- **Trusted** — No risky patterns; behavior matches the description
-- **Needs attention** — One or more risky patterns present; document them and decide before installing
-- **High risk** — Credential handling, raw script execution from an untrusted source, or hidden behavior; recommend not installing as-is
 
 ---
 

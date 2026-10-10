@@ -80,6 +80,8 @@ Don't load all references for every invocation. Load based on user's context.
 
 **Implementation:**
 
+> Paths below are illustrative — swap in your skill's own reference files.
+
 ```markdown
 ## Step 2: Load Relevant Knowledge
 
