@@ -39,6 +39,10 @@ Glob for all files in the skill directory:
 
 Read SKILL.md and every supporting file (references, workflows, templates, scripts).
 
+### If External Source Material Accompanies the Skill
+
+If the request includes source material (URLs, articles, repo links) ALONGSIDE this existing skill — e.g., "optimize X using repo Y" — this is the **benchmark variant**, not `from-source-material` creation. Load `references/benchmark-against-sources.md` and run the benchmark protocol: ingest the sources, map each principle to absorbed-in-skill / deliberately-diverged / absent-and-relevant, record divergences in a design note, then feed the findings to the 8 lenses (Step 5 Synthesis especially uses the absorbed/diverged map). "Nothing to import" is a valid outcome — see the reference.
+
 ### Present Inventory
 
 ```

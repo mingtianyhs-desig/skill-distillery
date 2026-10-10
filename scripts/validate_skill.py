@@ -13,7 +13,8 @@ Exit code:
 Checks mirror the deterministic items in references/quality-checklist.md:
 frontmatter validity, name/description rules, the 1,536-char listing cap,
 packaging compatibility (six-field rule), line counts, link integrity,
-orphan files, and drift (hard-coded years, model names).
+internal section-reference integrity, orphan files, and drift (hard-coded
+years, model names).
 
 What this script CANNOT check (still manual, per the checklist): synthesis
 quality, gotcha depth, interactivity, evaluation completeness.
@@ -171,6 +172,19 @@ def check_skill(skill_dir):
         target = m.group(1) or m.group(2)
         if not (skill_dir / target).exists():
             errors.append(f"SKILL.md links to missing file: {target}")
+
+    # internal section-ref integrity: §N.N / §N.N.N refs in prose must point
+    # to an actual heading. Section moves/renumbers silently break these; the
+    # link check above only covers file paths, not prose §-refs. Scoped to
+    # decimal form (§2.1.5) which maps to headings; dash form (§1-9) points to
+    # numbered list items, not headings, so it is not checked here.
+    body_nocode = re.sub(r"`[^`]*`", "", content.split("---", 2)[-1])
+    heading_nums = set(re.findall(r"^#{1,6}\s+(\d+\.\d+(?:\.\d+)?)\s", body_nocode, re.M))
+    for m in re.finditer(r"§(\d+\.\d+(?:\.\d+)?)", body_nocode):
+        ref = m.group(1)
+        if ref not in heading_nums:
+            line_no = body_nocode[: m.start()].count("\n") + 1
+            warnings.append(f"§{ref} referenced (line {line_no}) but no matching heading — dangling internal ref after a section move/renumber")
 
     # orphan scan: every non-SKILL.md file should be mentioned somewhere
     all_text = ""

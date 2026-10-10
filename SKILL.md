@@ -99,6 +99,7 @@ Detect what the user provided and route to the right workflow:
 | File path to article/doc/transcript | `workflows/from-source-material.md` |
 | File path to SKILL.md or skill directory | `workflows/audit-existing-skill.md` |
 | "audit", "review", "evaluate" in args | `workflows/audit-existing-skill.md` |
+| Source material (URL/article/repo) + existing skill + "optimize/improve/align using" | `workflows/audit-existing-skill.md` + `references/benchmark-against-sources.md` (benchmark variant — not from-source-material) |
 | "capture", "just did", "turn this process" | `workflows/from-recent-work.md` |
 | "add reference", "add workflow", "add script" | `workflows/add-component.md` |
 | "publish", "发布" | `workflows/publish.md` (manual only — never reached by auto-trigger) |
@@ -112,6 +113,7 @@ If the runtime substitutes `$ARGUMENTS` (Claude Code), use it directly. Otherwis
 1. Check `$ARGUMENTS` for URLs → from-source-material
 2. Check `$ARGUMENTS` for file paths → read the file, determine if it's a skill (has YAML frontmatter with `name`/`description`) or source material
 3. Check `$ARGUMENTS` for keywords: "audit", "review", "evaluate", "improve" → audit-existing-skill
+   - If sources (URLs/articles/repos) accompany an existing skill + improve/optimize/align → audit **benchmark variant** (load `references/benchmark-against-sources.md`), NOT from-source-material (which creates new skills)
 4. Check `$ARGUMENTS` for keywords: "add reference", "add workflow", "add component" → add-component
 5. Check `$ARGUMENTS` for keywords: "capture", "just did", "turn this into" → from-recent-work
 6. If `$ARGUMENTS` contains a description → from-description
@@ -135,6 +137,7 @@ All supporting knowledge in `references/`:
 | [mechanism-gate.md](references/mechanism-gate.md) | Confirm it's a skill, not a hook/CLAUDE.md/subagent — run before any creation or audit entry | Creation and audit entry points (first step) |
 | [official-spec.md](references/official-spec.md) | Skill spec — frontmatter fields, features, format. Authoritative source is the live online docs; check before building | Building or auditing skills |
 | [research-protocol.md](references/research-protocol.md) | When and how to research during creation (gate, execution, result handling) | Only when a research trigger fires (external APIs/libraries, fast-moving domain) |
+| [benchmark-against-sources.md](references/benchmark-against-sources.md) | Audit an existing skill against external source material — absorbed/diverged/absent mapping; "nothing to import" is valid | When sources accompany an existing skill + optimize/improve/align verb |
 | [synthesis-patterns.md](references/synthesis-patterns.md) | How to extract principles from source material | Source material or recent work entry points |
 | [architecture-decisions.md](references/architecture-decisions.md) | Simple vs. router, when to use each file type | Architecture proposal step (all workflows) |
 | [interactive-design-patterns.md](references/interactive-design-patterns.md) | Discovery, modes, wait gates, AskUserQuestion | Strategy step and audit workflow |
@@ -171,4 +174,4 @@ Ready-to-copy starting points in `templates/`:
 
 | Script | Use When |
 |--------|----------|
-| [validate_skill.py](scripts/validate_skill.py) | Deterministic checks: frontmatter, 1,536 cap, packaging warnings, link integrity, orphans, drift. Pure stdlib — runs in any environment (`python validate_skill.py <skill-dir>`). Run it during validation (see `workflows/build-and-validate.md` Step 3) |
+| [validate_skill.py](scripts/validate_skill.py) | Deterministic checks: frontmatter, 1,536 cap, packaging warnings, link integrity, internal section-ref integrity, orphans, drift. Pure stdlib — runs in any environment (`python validate_skill.py <skill-dir>`). Run it during validation (see `workflows/build-and-validate.md` Step 3) |
