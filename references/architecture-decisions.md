@@ -145,7 +145,7 @@ SKILL.md is always loaded. Use this guarantee strategically.
 - Templates and boilerplate (→ templates)
 - Executable code (→ scripts)
 
-**Target length:** 200-300 lines for router skills, under 200 for simple skills.
+**Target length (guardrail, not goal):** 200-300 lines for router skills, under 200 for simple skills. SKILL.md is the activation-time execution core — keep it clear and complete for the common activation; push only optional depth to references. Line count is a budget proxy, never a substitute for clarity: a 250-line SKILL.md that reads clearly beats a 150-line one that forces the agent to load four references to execute.
 
 ## Design Notes: Tooling Weight
 

@@ -48,7 +48,7 @@ These apply to everything skill-distillery does:
 
 3. **Propose before building** — Always present synthesis, architecture, and approach for user approval before creating files. Wait gates at every decision point.
 
-4. **Progressive disclosure** — SKILL.md stays lean (200-300 lines). Reference files contain depth. Load conditionally based on what the user needs.
+4. **Progressive disclosure** — SKILL.md is a clear, complete execution core for the common activation; reference files hold optional depth, loaded conditionally when the user's situation needs it. Line targets are guardrails, not goals — execution clarity beats brevity.
 
 5. **Opinionated defaults** — Suggest interactive patterns proven in good skills (a discovery phase for guided workflows, mode detection for multi-mode skills). The user can override, but the defaults should be good.
 
@@ -71,7 +71,7 @@ Where this skill itself typically fails — "don't do X because Y." These are th
 - **Don't build before the Mechanism Gate** — because a hook's job can't be fixed by better skill content. You'll ship a skill that never runs, and the user's failure will look like your failure. Run the gate first; if it's a hook, name the mechanism and stop.
 - **Don't treat confirmation as agreement with your hypothesis** — because "OK, go" is often the polite answer to the wrong assumption. Write the hypothesis down first so it can be proven wrong.
 - **Don't validate by mentally running the workflow** — because your imagination is calibrated to your own reading, not the reader's. Run the prompts against a no-skill baseline; if both behave identically, the prompt proves nothing.
-- **Don't let SKILL.md grow past the reader's attention** — because it lands in context on every turn and burns tokens whether or not it is used. Push detail into references; keep SKILL.md under 300 lines.
+- **Don't pad SKILL.md with optional depth** — because SKILL.md is the activation-time execution core: the agent reads all of it when the skill runs, so clarity and completeness for the common activation beat brevity. Push only genuinely-optional depth (edge cases, deep rationale) into references so activations that don't need it don't pay for it. The description is the every-turn cost — keep THAT lean; treat the 300-line cap as a guardrail, not a goal.
 - **Don't leave publishing reachable from an auto-triggered flow** — because `gh repo create --public` with no human in the loop is a footgun, not a feature. Publishing lives behind a manual entry point plus a confirmation gate.
 - **Don't hard-code models, hosts, or years** — because the skill is agent-agnostic by design. "`Use Sonnet for this`" or "`as of 2026`" will be wrong on another host and read as sloppiness here. Use 'current' phrasing and leave the model unset.
 - **Don't trust lens ratings alone** — because ratings are opinions calibrated to your reading, and mechanical drift (orphaned files, broken links, stale README trees, duplicated checklists that diverged) hides under "all strong" ratings. Run a cross-consistency scan (orphan check, link resolution, §-ref integrity, README/evals sync) before presenting an audit; the scan catches what the lenses miss.
