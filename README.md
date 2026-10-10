@@ -100,14 +100,18 @@ skill-distillery/
 │   ├── add-component.md                  # Extend existing skills
 │   └── publish.md                        # Ship/publish (manual only)
 ├── references/
+│   ├── mechanism-gate.md                 # Confirm skill vs hook/CLAUDE.md/subagent (first step)
 │   ├── official-spec.md                  # Skill specification (live docs authoritative)
+│   ├── research-protocol.md              # When/how to research during creation
+│   ├── benchmark-against-sources.md      # Audit against external source material
+│   ├── trigger-evaluation.md             # Systematic description-trigger verification
 │   ├── synthesis-patterns.md             # Bottom-up extraction methodology
 │   ├── architecture-decisions.md         # When to use simple vs. router
 │   ├── interactive-design-patterns.md    # Discovery, modes, wait gates
 │   ├── quality-checklist.md              # Validation checklist
 │   ├── evaluation-patterns.md            # Rigor lanes and eval packs
-│   ├── independent-review-brief.md       # Fresh-eyes review prompt
-│   └── cross-agent-compatibility.md      # Cross-agent portability guide
+│   ├── cross-agent-compatibility.md      # Cross-agent portability guide
+│   └── independent-review-brief.md       # Fresh-eyes review prompt
 ├── evals.md                              # Real-run eval pack + baseline results
 ├── templates/
 │   ├── simple-skill.md                   # Single-file template

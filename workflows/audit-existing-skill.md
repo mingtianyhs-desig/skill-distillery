@@ -193,17 +193,7 @@ Evaluate how the skill handles user interaction.
 
 Evaluate against the official specification.
 
-**Checklist:**
-- [ ] Valid YAML frontmatter between `---` delimiters
-- [ ] `name` is lowercase-with-hyphens, matches directory
-- [ ] `description` specific with trigger keywords, within the 1,536-char listing cap (combined with `when_to_use`)
-- [ ] `disable-model-invocation: true` if skill has side effects — or side-effecting steps isolated behind a manual-only entry point
-- [ ] SKILL.md under 500 lines
-- [ ] Standard markdown headings (not XML tags)
-- [ ] All referenced files exist and are properly linked
-- [ ] References one level deep (no nested chains)
-- [ ] Concrete examples present (not abstract)
-- [ ] Consistent terminology
+Run the Frontmatter, Structure, and Content checks from `references/quality-checklist.md` (loaded in Step 1) against the audited skill. That checklist is the single source for these items — listing them again here would drift (quality-checklist already carries the lane-specific line targets this step previously omitted).
 
 **Rating:**
 - **Fully compliant** — All checklist items pass
