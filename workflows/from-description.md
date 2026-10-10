@@ -5,9 +5,10 @@ User describes what they want the skill to accomplish. Brainstorm if vague, prop
 ## Required Reading
 
 Read these reference files before proceeding:
-1. `references/interactive-design-patterns.md`
-2. `references/architecture-decisions.md`
-3. `references/evaluation-patterns.md`
+1. `references/mechanism-gate.md`
+2. `references/interactive-design-patterns.md`
+3. `references/architecture-decisions.md`
+4. `references/evaluation-patterns.md`
 
 ---
 
@@ -15,16 +16,9 @@ Read these reference files before proceeding:
 
 Read what the user provided. Determine which path to take:
 
-### First: Is this a skill at all? (Mechanism Gate)
+### First: Mechanism Gate
 
-Before designing anything, apply this gate to what the user described:
-
-- **A reusable process or on-demand knowledge** → a skill. Continue. ✅
-- **Must happen every time and can't be skipped** → a host hook or external automation, NOT a skill. A skill is advisory instruction — the agent may run it when relevant, but nothing guarantees execution; only a hook does. Tell the user the mechanism is wrong and stop.
-- **A fact or convention that should hold every session** → a persistent instructions file (CLAUDE.md / AGENTS.md type), NOT a skill.
-- **A one-off investigation that would flood the main context** → a sub-agent, NOT a skill.
-
-If it's not a skill, say so plainly and name the right mechanism. Don't build a skill for a hook's job.
+Run the Mechanism Gate before designing anything — see `references/mechanism-gate.md`. If the answer is not "skill," name the right mechanism and stop; do not propose, build, or ask moot implementation-detail questions.
 
 ### Path A: Detailed Description
 

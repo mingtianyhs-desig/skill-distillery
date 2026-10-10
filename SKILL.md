@@ -1,6 +1,7 @@
 ---
 name: skill-distillery
-description: "Create or audit agent skills (Claude Code and other AI tools). Synthesizes source material (articles, frameworks, talks) bottom-up into strategic, interactive skills — or audits existing skills through a multi-lens framework. Use when creating new skills, turning articles into skills, capturing AI workflows as skills, auditing/reviewing existing skills, or improving skill quality. Triggers on: create skill, build skill, new skill, skill from article, turn this into a skill, capture this as a skill, audit skill, review skill, evaluate skill, improve skill."
+description: "Create or audit agent skills (Claude Code and other AI tools). Synthesizes source material (articles, frameworks, talks) bottom-up into strategic, interactive skills — or audits existing skills through a multi-lens framework. Use when creating, auditing, or improving skills, or turning articles/processes into skills. 中文触发：制作技能、创建技能、技能审计、技能评审、技能评估、改进技能、梳理技能、把文章或流程做成技能。"
+when_to_use: "Triggers on: create skill, build skill, new skill, skill from article, turn this into a skill, capture this as a skill, audit skill, review skill, evaluate skill, improve skill, add reference, publish skill. 中文触发：制作技能、创建技能、技能审计、技能评审、技能评估、改进技能、梳理技能、分析技能、把文章做成技能、捕获流程为技能、发布技能。"
 argument-hint: "[URL, file path, skill path, or description]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebFetch, WebSearch, AskUserQuestion, Agent
 ---
@@ -168,6 +169,7 @@ All supporting knowledge in `references/`:
 
 | File | Contents | Load When |
 |------|----------|-----------|
+| [mechanism-gate.md](references/mechanism-gate.md) | Confirm it's a skill, not a hook/CLAUDE.md/subagent — run before any creation or audit entry | Creation and audit entry points (first step) |
 | [official-spec.md](references/official-spec.md) | Skill spec — frontmatter fields, features, format. Authoritative source is the live online docs; check before building | Building or auditing skills |
 | [synthesis-patterns.md](references/synthesis-patterns.md) | How to extract principles from source material | Source material or recent work entry points |
 | [architecture-decisions.md](references/architecture-decisions.md) | Simple vs. router, when to use each file type | Architecture proposal step (all workflows) |

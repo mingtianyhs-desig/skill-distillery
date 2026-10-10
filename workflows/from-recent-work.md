@@ -5,9 +5,10 @@ Capture a process you just did with AI as a reusable skill. Turn "I figured this
 ## Required Reading
 
 Read these reference files before proceeding:
-1. `references/synthesis-patterns.md`
-2. `references/architecture-decisions.md`
-3. `references/evaluation-patterns.md`
+1. `references/mechanism-gate.md`
+2. `references/synthesis-patterns.md`
+3. `references/architecture-decisions.md`
+4. `references/evaluation-patterns.md`
 
 ---
 
@@ -15,16 +16,9 @@ Read these reference files before proceeding:
 
 Figure out what the user just did and what they learned.
 
-### First: Is this a skill at all? (Mechanism Gate)
+### First: Mechanism Gate
 
-Before capturing, apply this gate to what the user just did:
-
-- **A reusable process others would repeat** → a skill. Continue. ✅
-- **Must happen every time and can't be skipped** → a host hook or external automation, NOT a skill — a skill is advisory and may not run; only a hook guarantees execution.
-- **A one-off investigation, not a repeatable process** → not a skill; don't capture it as one.
-- **A fact or convention that should hold every session** → a persistent instructions file (CLAUDE.md / AGENTS.md type), NOT a skill.
-
-If it's not a skill, say so plainly and name the right mechanism.
+Run the Mechanism Gate before capturing — see `references/mechanism-gate.md`. If the answer is not "skill," name the right mechanism and stop; do not capture a hook or one-off investigation as a skill.
 
 ### Gather Context
 

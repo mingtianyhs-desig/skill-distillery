@@ -5,25 +5,22 @@ Run an existing skill through the full skill-distillery framework. Eight evaluat
 ## Required Reading
 
 Read ALL reference files before proceeding:
-1. `references/official-spec.md`
-2. `references/synthesis-patterns.md`
-3. `references/architecture-decisions.md`
-4. `references/interactive-design-patterns.md`
-5. `references/quality-checklist.md`
-6. `references/evaluation-patterns.md`
-7. `references/cross-agent-compatibility.md`
+1. `references/mechanism-gate.md`
+2. `references/official-spec.md`
+3. `references/synthesis-patterns.md`
+4. `references/architecture-decisions.md`
+5. `references/interactive-design-patterns.md`
+6. `references/quality-checklist.md`
+7. `references/evaluation-patterns.md`
+8. `references/cross-agent-compatibility.md`
 
 ---
 
 ## Step 1: Ingest the Skill
 
-### First: Should this exist as a skill? (Mechanism Gate)
+### First: Mechanism Gate
 
-Before auditing content, check whether the mechanism itself is right. A skill is advisory instruction — the agent may run it when relevant, but nothing guarantees execution.
-
-- **The "skill" is something that must happen every time and can't be skipped** (auto-formatting on commit, mandatory checks) → it's really a host hook or external automation. The verdict is: replace the mechanism, don't fix the content. Say so plainly and stop.
-- **Its real job is a fact or convention that should hold every session** → it's a persistent instructions file (CLAUDE.md / AGENTS.md type), not a skill.
-- **It's a genuine reusable process or on-demand knowledge** → continue the audit. ✅
+Run the Mechanism Gate before auditing content — see `references/mechanism-gate.md`. If the mechanism itself is wrong (a hook or a persistent instructions file masquerading as a skill), the verdict is "replace the mechanism, don't fix the content" — say so plainly and stop.
 
 ### Locate and Read
 
