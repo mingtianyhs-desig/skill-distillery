@@ -79,52 +79,13 @@ Where this skill itself typically fails — "don't do X because Y." These are th
 
 ## Rigor Lanes
 
-Choose a lane early and let it control investigation depth, artifact count, and validation:
-
-| Lane | Use When | Default Output | Validation |
-|------|----------|----------------|------------|
-| Quick Personal | The skill is for one high-context author | Concise `SKILL.md`; optional notes | 1-3 smoke prompts |
-| Team Internal | The skill will be reused by teammates or multiple agents | `SKILL.md` plus focused references; README optional | Trigger/non-trigger prompts plus representative tasks |
-| Public Polished | The skill is meant to be published or presented as a polished artifact | `SKILL.md`, README, eval pack, progressive references | Eval pack, fresh-agent test, compatibility review |
-
-Thorough investigation is still valuable for every lane. The difference is where it lives: research notes and rationale inform the distillation, while only execution-critical instructions belong in runtime skill files.
+Choose a lane early — it controls investigation depth, artifact count, and validation: **Quick Personal** (one author), **Team Internal** (shared), or **Public Polished** (published). Full criteria and per-lane requirements live in [evaluation-patterns.md](references/evaluation-patterns.md); load it before planning validation. Thorough investigation is valuable for every lane — the difference is where it lives (rationale informs distillation; only execution-critical instructions belong in runtime files).
 
 ---
 
 ## Research Protocol
 
-When and how to research during skill creation.
-
-**When to trigger:**
-- Skill involves external APIs or libraries needing current docs
-- Domain where best practices shift fast (frameworks, deployment patterns)
-- Audit reveals the skill references outdated libraries or patterns
-- User explicitly asks: "Can you research X?"
-
-**When NOT to trigger:**
-- Source material is self-contained (articles, talks)
-- User already knows the domain
-- Skill is about internal processes or conventions
-- Simple skills that don't reference external tools
-
-**How to ask:** One gate before spawning anything:
-
-> This involves [X]. Want me to research current best practices, or do you have enough context?
-
-Per the question convention:
-- **Yes, research first** — Fetch current documentation for accurate implementation
-- **No, I have context** — Proceed with what we have
-
-**How to execute:** Spawn 2-3 parallel sub-agents (fast, cheap, good at retrieval) with specific, scoped questions. Not "research everything about X" — scope to what you actually need.
-
-Example agent prompts:
-- "Fetch current Supabase RLS patterns from official docs"
-- "Find current best practices for React Native navigation libraries"
-- "Check if [library] is still actively maintained"
-
-Use Context7 MCP when available: `resolve-library-id` → `query-docs` for library documentation.
-
-**How to use results:** Feed research back into synthesis and strategy — inform the principles and architecture. Don't dump raw findings into reference files. Present key findings to user before proceeding.
+Research is **on demand, not by default** — most skill creation doesn't need it. Trigger only when the skill involves external APIs/libraries, a fast-moving domain, an audit reveals outdated patterns, or the user asks. Otherwise skip entirely. Full protocol (gate, execution, result handling) in [research-protocol.md](references/research-protocol.md); load it only when a trigger fires.
 
 ---
 
@@ -173,6 +134,7 @@ All supporting knowledge in `references/`:
 |------|----------|-----------|
 | [mechanism-gate.md](references/mechanism-gate.md) | Confirm it's a skill, not a hook/CLAUDE.md/subagent — run before any creation or audit entry | Creation and audit entry points (first step) |
 | [official-spec.md](references/official-spec.md) | Skill spec — frontmatter fields, features, format. Authoritative source is the live online docs; check before building | Building or auditing skills |
+| [research-protocol.md](references/research-protocol.md) | When and how to research during creation (gate, execution, result handling) | Only when a research trigger fires (external APIs/libraries, fast-moving domain) |
 | [synthesis-patterns.md](references/synthesis-patterns.md) | How to extract principles from source material | Source material or recent work entry points |
 | [architecture-decisions.md](references/architecture-decisions.md) | Simple vs. router, when to use each file type | Architecture proposal step (all workflows) |
 | [interactive-design-patterns.md](references/interactive-design-patterns.md) | Discovery, modes, wait gates, AskUserQuestion | Strategy step and audit workflow |

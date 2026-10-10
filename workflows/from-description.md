@@ -102,13 +102,7 @@ Per the question convention:
 
 ## Step 2: Research (if needed)
 
-Follow the Research Protocol from SKILL.md:
-
-- If the skill involves external APIs/libraries, trigger the research gate
-- Ask: "This involves [X]. Want me to research current best practices, or do you have enough context?"
-- If yes: spawn 2-3 parallel sub-agents with scoped questions (one per topic: library docs, patterns, pitfalls)
-- Feed findings back into the proposal — don't dump into skill files
-- If the user already knows the domain well: skip entirely
+If the skill involves external APIs/libraries or a fast-moving domain, follow the Research Protocol — see `references/research-protocol.md` (gate, execution, result handling). If the user already knows the domain well, skip entirely.
 
 ---
 

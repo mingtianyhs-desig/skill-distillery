@@ -135,11 +135,7 @@ For Quick Personal skills, ask this only when the user mentions multiple agents 
 
 ### Research Gate
 
-If the skill involves external APIs, libraries, or domains where best practices shift fast:
-
-> This involves [X]. Want me to research current best practices before building, or do you have enough context?
-
-If research requested: spawn 2-3 parallel sub-agents with scoped questions (one per topic). Present findings before proceeding.
+If the skill involves external APIs, libraries, or a fast-moving domain, follow the Research Protocol — see `references/research-protocol.md` (gate, execution, result handling). Otherwise skip research entirely.
 
 ---
 
