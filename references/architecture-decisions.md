@@ -146,3 +146,13 @@ SKILL.md is always loaded. Use this guarantee strategically.
 - Executable code (→ scripts)
 
 **Target length:** 200-300 lines for router skills, under 200 for simple skills.
+
+## Design Notes: Tooling Weight
+
+skill-distillery deliberately stays lean on executable tooling — one script (`validate_skill.py`), no automation loops, no browser-based review viewer. This diverges from peer skill-creation tools (e.g., skill-creator, which bundles 8 scripts, 3 subagents, an eval-viewer, and a description-optimization loop) — deliberately, not as a gap:
+
+- **Lean over harness** — Core Principle #4 (progressive disclosure) and gotcha #6 (don't let SKILL.md grow) apply to the skill's *own* tool surface too. A heavy bundled harness adds distribution complexity and maintenance for every user, when most invocations need principles, not scripts.
+- **Agent-agnostic** — automation loops that shell out to a specific CLI (`claude -p`) violate gotcha #8 (don't hard-code hosts). skill-distillery prescribes portable *methodology* (trigger-eval, change-scoped runs, non-discriminating-assertion checks) and leaves the *automation* to environments that have it.
+- **Interactive review over browser viewers** — the question convention (tappable options, falling back to numbered text) replaces an HTML-review loop, keeping the skill portable to runtimes without a browser.
+
+Where a peer tool's *methodology* is portable (trigger-eval's near-miss negatives, change-scoped runs, non-discriminating-assertion checks), skill-distillery absorbs it into references — the methodology, never the script.

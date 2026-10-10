@@ -166,6 +166,8 @@ description: Helps with documents
 description: A comprehensive guide to PDF manipulation with examples and best practices
 ```
 
+To verify a description actually triggers correctly (not just reads well), run trigger-evaluation — see [trigger-evaluation.md](trigger-evaluation.md). Authoring triggers is not the same as verifying they fire.
+
 ## Key Rules
 
 - SKILL.md under 500 lines — split detailed content into reference files

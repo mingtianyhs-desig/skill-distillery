@@ -138,6 +138,7 @@ All supporting knowledge in `references/`:
 | [official-spec.md](references/official-spec.md) | Skill spec — frontmatter fields, features, format. Authoritative source is the live online docs; check before building | Building or auditing skills |
 | [research-protocol.md](references/research-protocol.md) | When and how to research during creation (gate, execution, result handling) | Only when a research trigger fires (external APIs/libraries, fast-moving domain) |
 | [benchmark-against-sources.md](references/benchmark-against-sources.md) | Audit an existing skill against external source material — absorbed/diverged/absent mapping; "nothing to import" is valid | When sources accompany an existing skill + optimize/improve/align verb |
+| [trigger-evaluation.md](references/trigger-evaluation.md) | Systematic description-trigger verification (20 should/shouldn't queries, near-miss negatives, train/test) — the description analog of gotcha #5 | Public Polished skills, or when triggering is shaky |
 | [synthesis-patterns.md](references/synthesis-patterns.md) | How to extract principles from source material | Source material or recent work entry points |
 | [architecture-decisions.md](references/architecture-decisions.md) | Simple vs. router, when to use each file type | Architecture proposal step (all workflows) |
 | [interactive-design-patterns.md](references/interactive-design-patterns.md) | Discovery, modes, wait gates, AskUserQuestion | Strategy step and audit workflow |

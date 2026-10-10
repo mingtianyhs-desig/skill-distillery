@@ -107,6 +107,12 @@ After a change — not at a ship/milestone gate — run only the evals whose ass
 - Run at least one positive trigger, one representative task, and one non-trigger in the current environment
 - Perform the fresh-agent test if available
 - If a true fresh-agent test is unavailable, mark that limitation in the validation report and keep the checklist in `evals.md`
+- **Trigger verification**: load `references/trigger-evaluation.md` and run the systematic trigger-eval — 20 should/shouldn't queries (near-miss negatives verify the `Not for` boundary), train/test split, pick the best description variant by test score. Smoke (1-3 prompts) is for Quick; this is the Public-grade version.
+
+### During & After the Run
+
+- **Capture timing/token data immediately** — `total_tokens` and `duration_ms` arrive in the task notification and are not persisted elsewhere. Grab them while the run is fresh; they're gone after.
+- **Flag non-discriminating assertions** — for each assertion, if it passes in BOTH with-skill and baseline, it's non-discriminating (ceiling effect — gotcha #5's "if both behave identically the prompt proves nothing"). Mark it, then replace it or add a behavioral assertion (rounds taken, when a tactic switches) so the eval actually measures the skill's contribution.
 
 Fix any failed Public Polished eval before moving on.
 
