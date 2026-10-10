@@ -100,7 +100,6 @@ skill-distillery/
 │   ├── add-component.md                  # Extend existing skills
 │   └── publish.md                        # Ship/publish (manual only)
 ├── references/
-│   ├── mechanism-gate.md                 # Confirm skill vs hook/CLAUDE.md/subagent (first step)
 │   ├── official-spec.md                  # Skill specification (live docs authoritative)
 │   ├── research-protocol.md              # When/how to research during creation
 │   ├── benchmark-against-sources.md      # Audit against external source material

@@ -12,7 +12,7 @@ Read this reference file before proceeding:
 ## Step 1: Understand the Existing Skill
 
 Read the target skill:
-- Glob for all files in the skill directory
+- Find all files in the skill directory
 - Read SKILL.md to understand structure and current architecture
 - Note existing references, workflows, templates, scripts
 

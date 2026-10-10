@@ -58,36 +58,7 @@ Minimum eval pack:
 
 ## Eval Pack Format
 
-Create `evals.md` for Team Internal and Public Polished skills unless the user asks for another format.
-
-Recommended sections:
-
-```markdown
-# Skill Evals
-
-## Positive Triggers
-- Prompt:
-  Expected:
-
-## Non-Triggers
-- Prompt:
-  Expected:
-
-## Representative Tasks
-- Prompt:
-  Expected:
-  Success signals:
-
-## Edge Cases
-- Prompt:
-  Expected:
-  Failure signals:
-
-## Fresh-Agent Test
-- Install/load steps:
-- Prompt:
-- Expected:
-```
+Create `evals.md` for Team Internal and Public Polished skills unless the user asks for another format. Use the fillable skeleton in `templates/eval-pack.md` — sections: How to Run (with the baseline/ceiling rule), Positive Triggers, Non-Triggers, Representative Tasks, Incomplete Context, Edge Cases, Fresh-Agent Test.
 
 ## Writing Good Evals
 

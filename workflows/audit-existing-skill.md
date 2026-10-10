@@ -5,14 +5,13 @@ Run an existing skill through the full skill-distillery framework. Eight evaluat
 ## Required Reading
 
 Read ALL reference files before proceeding:
-1. `references/mechanism-gate.md`
-2. `references/official-spec.md`
-3. `references/synthesis-patterns.md`
-4. `references/architecture-decisions.md`
-5. `references/interactive-design-patterns.md`
-6. `references/quality-checklist.md`
-7. `references/evaluation-patterns.md`
-8. `references/cross-agent-compatibility.md`
+1. `references/official-spec.md`
+2. `references/synthesis-patterns.md`
+3. `references/architecture-decisions.md`
+4. `references/interactive-design-patterns.md`
+5. `references/quality-checklist.md`
+6. `references/evaluation-patterns.md`
+7. `references/cross-agent-compatibility.md`
 
 ---
 
@@ -20,7 +19,7 @@ Read ALL reference files before proceeding:
 
 ### First: Mechanism Gate
 
-Run the Mechanism Gate before auditing content — see `references/mechanism-gate.md`. If the mechanism itself is wrong (a hook or a persistent instructions file masquerading as a skill), the verdict is "replace the mechanism, don't fix the content" — say so plainly and stop.
+Run the Mechanism Gate before auditing content — see the Mechanism Gate section in SKILL.md. If the mechanism itself is wrong (a hook or a persistent instructions file masquerading as a skill), the verdict is "replace the mechanism, don't fix the content" — say so plainly and stop.
 
 ### Locate and Read
 

@@ -152,25 +152,9 @@ Include:
 - 1 representative task prompt
 - Optional incomplete-context prompt
 
-### Team Internal
+### Team Internal & Public Polished
 
-Create or plan an `evals.md` with:
-- 3 positive trigger prompts
-- 1-2 negative/non-trigger prompts
-- 2 representative task prompts
-- 1 incomplete-context prompt
-- Expected behavior bullets
-
-### Public Polished
-
-Create or plan an `evals.md` with:
-- 5 positive trigger prompts
-- 3 negative/non-trigger prompts
-- 3 representative task prompts
-- 2 edge-case or adversarial prompts
-- 1 incomplete-context prompt
-- Fresh-agent test checklist
-- Expected behavior, success signals, and failure signals
+Create or plan an `evals.md` following the chosen lane's minimum eval pack in `references/evaluation-patterns.md` (Required Reading). Don't re-list the per-lane prompt counts here — evaluation-patterns is the single source; this workflow follows it.
 
 Present:
 

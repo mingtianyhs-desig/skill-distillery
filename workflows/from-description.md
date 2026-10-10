@@ -5,10 +5,9 @@ User describes what they want the skill to accomplish. Brainstorm if vague, prop
 ## Required Reading
 
 Read these reference files before proceeding:
-1. `references/mechanism-gate.md`
-2. `references/interactive-design-patterns.md`
-3. `references/architecture-decisions.md`
-4. `references/evaluation-patterns.md`
+1. `references/interactive-design-patterns.md`
+2. `references/architecture-decisions.md`
+3. `references/evaluation-patterns.md`
 
 ---
 
@@ -18,7 +17,7 @@ Read what the user provided. Determine which path to take:
 
 ### First: Mechanism Gate
 
-Run the Mechanism Gate before designing anything — see `references/mechanism-gate.md`. If the answer is not "skill," name the right mechanism and stop; do not propose, build, or ask moot implementation-detail questions.
+Run the Mechanism Gate before designing anything — see the Mechanism Gate section in SKILL.md. If the answer is not "skill," name the right mechanism and stop; do not propose, build, or ask moot implementation-detail questions.
 
 ### Path A: Detailed Description
 

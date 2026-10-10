@@ -5,10 +5,9 @@ Capture a process you just did with AI as a reusable skill. Turn "I figured this
 ## Required Reading
 
 Read these reference files before proceeding:
-1. `references/mechanism-gate.md`
-2. `references/synthesis-patterns.md`
-3. `references/architecture-decisions.md`
-4. `references/evaluation-patterns.md`
+1. `references/synthesis-patterns.md`
+2. `references/architecture-decisions.md`
+3. `references/evaluation-patterns.md`
 
 ---
 
@@ -18,7 +17,7 @@ Figure out what the user just did and what they learned.
 
 ### First: Mechanism Gate
 
-Run the Mechanism Gate before capturing — see `references/mechanism-gate.md`. If the answer is not "skill," name the right mechanism and stop; do not capture a hook or one-off investigation as a skill.
+Run the Mechanism Gate before capturing — see the Mechanism Gate section in SKILL.md. If the answer is not "skill," name the right mechanism and stop; do not capture a hook or one-off investigation as a skill.
 
 ### Gather Context
 
