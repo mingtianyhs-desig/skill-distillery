@@ -68,7 +68,7 @@ Common failure points — where Claude gets this wrong:
 
 {{Delete if obvious. Include only the minimum policy for missing inputs.}}
 
-{{Optional: For deeper procedure, see [reference.md](reference.md).}}
+{{Optional: For deeper procedure, link a reference file here — create the file first, then reference it.}}
 ```
 
 ## Customization Notes

@@ -223,6 +223,8 @@ Evaluate portability across AI coding agents.
 
 ## Step 10: Present Full Assessment
 
+**Before formatting: run a cross-consistency scan** — orphan check (every file indexed in SKILL.md), link resolution (every markdown link target resolves), §-ref integrity, README/evals sync. Lens ratings are opinions; mechanical drift (orphaned files, broken links, stale trees, diverged duplicate checklists) hides under "all strong" ratings. The scan catches what the lenses miss. (See the matching gotcha in SKILL.md.)
+
 Format the results:
 
 ```

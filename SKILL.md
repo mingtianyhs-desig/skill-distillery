@@ -74,6 +74,7 @@ Where this skill itself typically fails — "don't do X because Y." These are th
 - **Don't let SKILL.md grow past the reader's attention** — because it lands in context on every turn and burns tokens whether or not it is used. Push detail into references; keep SKILL.md under 300 lines.
 - **Don't leave publishing reachable from an auto-triggered flow** — because `gh repo create --public` with no human in the loop is a footgun, not a feature. Publishing lives behind a manual entry point plus a confirmation gate.
 - **Don't hard-code models, hosts, or years** — because the skill is agent-agnostic by design. "`Use Sonnet for this`" or "`as of 2026`" will be wrong on another host and read as sloppiness here. Use 'current' phrasing and leave the model unset.
+- **Don't trust lens ratings alone** — because ratings are opinions calibrated to your reading, and mechanical drift (orphaned files, broken links, stale README trees, duplicated checklists that diverged) hides under "all strong" ratings. Run a cross-consistency scan (orphan check, link resolution, §-ref integrity, README/evals sync) before presenting an audit; the scan catches what the lenses miss.
 
 ---
 

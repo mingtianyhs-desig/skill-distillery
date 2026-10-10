@@ -71,3 +71,12 @@ The same prompt run with **no** skill guidance:
 3. **The gate is the only part of this revamp with executed evidence.** Steps 3-10, publish, and cross-agent review all remain unexecuted; their value rests on design review, not runs.
 4. **`scripts/validate_skill.py` passes** on this skill. Two non-standard frontmatter keys — `argument-hint` and `when_to_use` — are safe for CLI agents but hard errors if packaged to claude.ai / Skills API (see official-spec's Packaging Compatibility). (A third warning, "name != directory name", is a test-harness artifact of invoking with `.` and is not a skill defect.)
 5. **Method limitation:** single-turn sampling cannot catch multi-turn failures (e.g., drifting off the workflow mid-build). A full session run is the missing piece, and it is the only assertion type that would distinguish "the skill is followed" from "the skill is read."
+
+## Post-Run Additions (Untested)
+
+These behaviors were added after this run (commits `779b3e2` onward) and are **not** covered by the run above. Each warrants a scoped run on its affected area (per the change-scoped rule in build-and-validate Step 4) before ship:
+
+- **benchmark-against-sources audit variant** — routing: source + existing skill + "optimize/improve/align" verb → absorbed/diverged/absent mapping (not the standard 8-lens audit)
+- **trigger-evaluation Public step** — build-and-validate Step 4 Public Polished loads `references/trigger-evaluation.md`, runs 20 should/shouldn't queries with near-miss negatives
+- **change-scoped eval rule** — build-and-validate Step 4: after a change, run only evals touching the changed area (full suite at ship/milestone gates)
+- **P2/P3 run practices** — capture timing/token from task notifications; flag non-discriminating assertions (pass in both with-skill and baseline = ceiling)
